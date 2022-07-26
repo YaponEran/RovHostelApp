@@ -1,0 +1,5 @@
+en:
+ employee:
+  users:
+    create:
+      success: User was successfully created

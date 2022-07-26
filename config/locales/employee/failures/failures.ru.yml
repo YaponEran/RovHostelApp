@@ -1,4 +1,4 @@
 ru:
   employee:
     failures:
-      validation_error: Проверьте форму  %{title}
+      validation_error: Проверьте форму

@@ -1,0 +1,5 @@
+ru:
+ employee:
+  users:
+    create:
+      success: Пользователь успешно создан
