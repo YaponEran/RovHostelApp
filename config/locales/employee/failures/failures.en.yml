@@ -1,0 +1,4 @@
+en:
+  employee:
+    failures:
+      validation_error: Check the form

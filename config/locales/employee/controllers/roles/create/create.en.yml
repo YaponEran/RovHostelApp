@@ -1,0 +1,5 @@
+en:
+  employee:
+    roles:
+      create:
+        success: Role created successfully

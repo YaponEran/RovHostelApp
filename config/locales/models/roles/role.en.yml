@@ -1,0 +1,6 @@
+en:
+  activerecord:
+    attributes:
+      role:
+        title: Title
+        users_count: Users count

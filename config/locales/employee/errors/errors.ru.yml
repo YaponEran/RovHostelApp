@@ -1,0 +1,6 @@
+---
+ru:
+  employee:
+    errors:
+      mobile_phone: Телефон введен не верно
+      profile_must_be_filled: Нужно заполнить анкетные данные для продолжения

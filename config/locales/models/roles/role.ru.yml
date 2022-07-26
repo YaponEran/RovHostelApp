@@ -1,0 +1,6 @@
+ru:
+  activerecord:
+    attributes:
+      role:
+        title: Название роли
+        users_count: Количество пользователей

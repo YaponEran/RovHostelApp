@@ -1,0 +1,5 @@
+ru:
+  employee:
+    roles:
+      create:
+        success: Роль успешно создана

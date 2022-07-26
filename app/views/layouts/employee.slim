@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    title = "Hostel"
+    meta name="viewport" content="width=device-width,initial-scale=1"
+    = csrf_meta_tags
+    = csp_meta_tag
+    / = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'employee', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'employee', 'data-turbolinks-track': 'reload'
+    
+    body
+      = render 'shared/header'
+
+      - flash.each do |type, msg|
+        .notification class="#{type == 'error' ? 'is-danger' : 'is-info'}"
+          = msg
+
+      .container
+        = yield

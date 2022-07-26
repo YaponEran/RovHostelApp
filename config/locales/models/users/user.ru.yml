@@ -1,0 +1,10 @@
+ru:
+  activerecord:
+    attributes:
+      user:
+        first_name: Имя
+        last_name: Фамилия
+        email: Почта
+        password: Пароль
+        mobile_phone: Мобильный телефон
+        role_id: Роль

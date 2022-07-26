@@ -1,0 +1,9 @@
+= form_for [:employee, @role], local: true do |f|
+  .field
+    = f.label :title, class: "label"
+    .control
+      = f.text_field :title, class: "input"
+
+  .field.is-grouped
+    .control
+      = f.submit "Submit", class: "button is-primary"

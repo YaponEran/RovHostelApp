@@ -1,0 +1,6 @@
+---
+en:
+  employee:
+    errors:
+      mobile_phone: The phone number is not correct
+      profile_must_be_filled: You must fill the profile data to continue
