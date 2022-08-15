@@ -1,4 +1,16 @@
-h1 = t(".title")
-= render @roles
+- breadcrumb :employee_roles
 
-= link_to "Add Role", new_employee_role_path, class: "button is-info"
+table.table.is-fullwidth.mt-3
+  thead
+    tr
+      th = Role.human_attribute_name(:title)
+      th.has-text-centered = Role.human_attribute_name(:users_count)
+  tbody
+    - @roles.each do |role|
+      tr
+        td
+          = link_to role.title, employee_role_path(role), title: "show"
+        td.has-text-centered
+          = role.users.count
+
+= link_to t("actions.create"), new_employee_role_path, class: "button is-info"

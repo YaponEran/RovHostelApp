@@ -1,4 +1,4 @@
-nav.navbar.is-light.is-spaced aria-label=("main navigation") role="navigation" 
+nav.navbar.is-light.is-spaced.styled_nav aria-label=("main navigation") role="navigation" 
   .navbar-brand
     a.navbar-item href=employee_root_path 
       img height="28" src="https://bulma.io/images/bulma-logo.png" width="112" /
@@ -16,8 +16,7 @@ nav.navbar.is-light.is-spaced aria-label=("main navigation") role="navigation"
         a.navbar-link
           | More
         .navbar-dropdown
-          a.navbar-item
-            | About
+          = link_to "Roles", employee_roles_path, class: "navbar-item"
           a.navbar-item
             | Jobs
           a.navbar-item

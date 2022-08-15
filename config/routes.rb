@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   namespace :employee do
     root to: "dashbord#index"
 
-    resources :roles
+    resources :roles do
+      resources :permissions
+    end
 
     resources :users
   end

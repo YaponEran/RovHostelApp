@@ -1,0 +1,19 @@
+en:
+  employee:
+    permissions:
+      actions:
+        employee/roles:
+          create: Create role
+          update: Update role
+          destroy: Delete role
+          show: View role details
+          index: View roles list
+        employee/users:
+          create: Create employee
+          update: Update employee
+          destroy: Delete employee
+          show: View employee details
+          index: View employees list
+      subjects:
+        employee/roles: Roles
+        employee/users: Employees

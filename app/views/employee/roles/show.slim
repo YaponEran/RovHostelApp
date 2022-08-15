@@ -1,2 +1,38 @@
 
-  
+- breadcrumb :employee_role, @role
+
+h1.title.is-3 = @role.title
+
+.field.is-grouped
+  .control
+    = link_to t("actions.back"), employee_roles_path, class: "button is-link is-small"
+  .control
+    = link_to t("actions.edit"), edit_employee_role_path(@role), class: "button is-link is-small"
+  .control.role_destroy
+    = link_to t("actions.destroy"), employee_role_path(@role), method: :delete, class: "button is-danger is-small"
+
+
+// dont forget to render user lists
+h4
+  b = t(".users_list")
+br/
+= render "employee/users/user_list", resource: @role.users
+
+h4
+  b = t(".permission_list")
+br/
+
+- Permission::AVAILABLE.each do |subject, actions|
+  h5
+    b = t("employee.permissions.subjects.#{subject}")
+  - actions.each do |action|
+    p 
+      - permission = @permissions.select { |p| p.subject == subject.to_s && p.action == action.to_s }.last
+      - if permission
+        = link_to employee_role_permission_path(@role, permission), method: :delete, class: "has-text-success", title:  "remove permission"
+          i.fas.fa-lock-open
+      - else
+        = link_to employee_role_permissions_path(@role, permission: { subject: subject.to_s, action: action.to_s }), method: :post, class: "has-text-danger", title: "add-permission"
+          i.fas.fa-lock
+      span< = t("employee.permissions.actions.#{subject}.#{action}")
+  br/

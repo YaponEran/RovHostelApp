@@ -1,0 +1,5 @@
+ru:
+  employee:
+    roles:
+      destroy:
+        success: Роль удалена успешно

@@ -1,2 +1,21 @@
+
+-breadcrumb :employee_user, current_user
+
+table.table.is-fullwidth
+  thead
+    tr
+      th = User.human_attribute_name(:email)
+      th = User.human_attribute_name(:first_name)
+      th = User.human_attribute_name(:last_name)
+      th = User.human_attribute_name(:role_id)
+      th = User.human_attribute_name(:mobile_phone)
+  tbody
+    tr
+      td = current_user.email
+      td = current_user.first_name
+      td = current_user.last_name
+      td = current_user.role.title
+      td = current_user.mobile_phone
+
 h1.title = current_user.email
 h1.title.tag.is-success = "Role: #{current_user.role.title}"

@@ -30,6 +30,7 @@ gem 'dry-monads'
 gem 'dry-validation'
 gem 'slim-rails'
 gem 'i18n-tasks', '~> 1.0.11'
+gem "gretel"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -55,6 +56,7 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
+  gem "cuprite"
   gem 'selenium-webdriver', '>= 4.0.0.rc1'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'

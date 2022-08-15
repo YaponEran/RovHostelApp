@@ -1,0 +1,6 @@
+en:
+  employee:
+    roles:
+      show:
+        permission_list: Permissions list
+        users_list: Users list

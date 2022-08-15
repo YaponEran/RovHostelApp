@@ -1,0 +1,13 @@
+
+table.table.is-fullwidth.mt-3
+  thead
+    tr
+      th = "Ползовател"
+      th = User.human_attribute_name(:mobile_phone)
+      th = User.human_attribute_name(:role_id)
+  tbody
+    - resource.each do |user|
+      tr
+        td = link_to user.full_name, employee_user_path(user)
+        td = user.mobile_phone
+        td = user.role.title

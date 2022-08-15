@@ -10,15 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_23_124755) do
+ActiveRecord::Schema.define(version: 2022_08_07_072813) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "permissions", force: :cascade do |t|
+    t.bigint "role_id"
+    t.string "subject", null: false
+    t.string "action", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["action"], name: "index_permissions_on_action"
+    t.index ["role_id", "subject", "action"], name: "index_permissions_on_role_id_and_subject_and_action", unique: true
+    t.index ["role_id"], name: "index_permissions_on_role_id"
+    t.index ["subject"], name: "index_permissions_on_subject"
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["title"], name: "index_roles_on_title", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -39,5 +52,6 @@ ActiveRecord::Schema.define(version: 2022_07_23_124755) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "permissions", "roles"
   add_foreign_key "users", "roles"
 end

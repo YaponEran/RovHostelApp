@@ -17,5 +17,14 @@ RSpec.describe Operations::Roles::Create, type: :service do
         expect{ subject.call(params) }.to change{Role.count}.by(1)
       end
     end
+
+    context "When params is not uniq" do
+      let!(:role) { create(:role, title: "Admin") }
+      it "returns :uniqueness_violation error" do
+        result = subject.call({ title: role.title })
+        expect(result).to be_a(Dry::Monads::Failure)
+        expect(result.failure[0]).to eq(:uniqueness_violation)
+      end
+    end
   end
 end
