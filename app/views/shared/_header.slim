@@ -30,7 +30,7 @@ nav.navbar.is-light.is-spaced.styled_nav aria-label=("main navigation") role="na
           = link_to current_user.email, employee_user_path(current_user)
         - else
           = link_to "Sign in", new_employee_user_path, class: "button is-primary bold has-text-weight-semibold"
-          = link_to "Log in", user_session_path, class: "button is-dark  ml-3"
+          / = link_to "Log in", user_session_path, class: "button is-dark  ml-3"
         
         - if user_signed_in?
-          = link_to "Log out", destroy_session_path(current_user), method: :delete
+          = link_to "Log out", destroy_session_path(current_user), method: :delete, class: "button ml-3"

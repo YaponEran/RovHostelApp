@@ -12,7 +12,7 @@ shared_examples_for "Authenticable without policy" do
   it "with correct credentials without policy" do
     visit new_user_session_path
     sign_in_with(user.email, user.password)
-    visit new_office_branch_path
+    visit new_employee_user_path
     expect(page).to have_content("You are not authorized for this action")
   end
 end

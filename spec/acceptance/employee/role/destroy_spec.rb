@@ -1,29 +1,28 @@
 require "feature_helper"
 
 feature "Destroy role" do
-  let!(:role) { create(:role) }
-  let!(:user) { create(:user, role: role) }
+  let(:role) { create(:role) }
+  let(:user) { create(:user, admin: true, role: role) }
 
   describe "With correct policy", js: true do
     background do
       create(:permission, subject: "employee/roles", action: "destroy", role: role)
       create(:permission, subject: "employee/roles", action: "show", role: role)
       create(:permission, subject: "employee/roles", action: "index", role: role)
+
+      visit new_user_session_path
       sign_in_with(user.email, user.password)
+      visit employee_role_path(role)
     end
 
-    scenario "with correct params" do
-      visit employee_role_path(role)
-      # click_on "Destroy"
+    scenario "with correct params", js: true do
+      click_on "Destroy"
+      expect(page).to have_content("Destroy")
       save_and_open_page
-      
-      # within(".role_destroy") do
-      #   click_on "Destroy"
-      #   save_and_open_page
-      # end
-      # accept_alert do
-        # click_on "Destroy"
-      # end
+
+      # при нажатие кнопку Destroy происходит Logout
+      # так же не происходит удаление роли
+      # save_and_open_page
     end
 
   end
