@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :user do
-    first_name { "Rovshen" }
-    last_name { "Gulamow" }
-    mobile_phone { "+7(707)341-59-52" } 
-    email { "test@mail.ru" }
+    sequence(:first_name) { |n| "Testname#{n}"}
+    sequence(:last_name) { |n| "Lastname#{n}"}
+    sequence(:mobile_phone) { |n| "+7(707)341-59-5#{n}"}
+    sequence(:email) { |n| "test#{n}@mail.ru"}
     password { "123456" } 
     role
   end

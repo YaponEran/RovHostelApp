@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_07_072813) do
+ActiveRecord::Schema.define(version: 2022_09_02_080553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "hotels", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "adress", null: false
+    t.string "postcode", null: false
+    t.string "phone_number", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["title"], name: "index_hotels_on_title", unique: true
+    t.index ["user_id"], name: "index_hotels_on_user_id"
+  end
 
   create_table "permissions", force: :cascade do |t|
     t.bigint "role_id"
@@ -31,6 +43,7 @@ ActiveRecord::Schema.define(version: 2022_08_07_072813) do
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "role_rank", default: 0
     t.index ["title"], name: "index_roles_on_title", unique: true
   end
 
@@ -52,6 +65,7 @@ ActiveRecord::Schema.define(version: 2022_08_07_072813) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "hotels", "users"
   add_foreign_key "permissions", "roles"
   add_foreign_key "users", "roles"
 end

@@ -1,6 +1,10 @@
 module Employee
   class UsersController < BaseController
 
+    def index
+      @users = User.all
+    end
+
     def new
       @user = User.new
     end
@@ -24,6 +28,26 @@ module Employee
 
     def show
       @user = User.find_by(id: params[:id])
+    end
+
+    def edit
+      @user = User.find_by(id: params[:id])
+    end
+
+    def update
+      @user = User.find_by(id: params[:id])
+
+      operations = Operations::Users::Update.new
+      result = operations.call(@user, user_params)
+
+      case result
+      in Success
+        flash[:success] = t(".success")
+        redirect_to employee_users_path
+      in Failure[error, payload]
+        failure_resolver(error, **payload)
+        render :edit
+      end
     end
 
     private

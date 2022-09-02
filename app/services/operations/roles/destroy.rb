@@ -5,7 +5,7 @@ module Operations
 
       def call(role)
         role = yield check_role(role)
-
+        yield check_users(role)
         yield commit(role)
 
         Success()
@@ -17,6 +17,14 @@ module Operations
         Success(role)
       rescue ActiveRecord::RecordNotUnique
         Failure[:role_does_not_found, {}]
+      end
+
+      def check_users(role)
+        if role.users.empty?
+          Success()
+        else
+          Failure[:role_has_dependent_users, {}]
+        end
       end
 
       def commit(role)

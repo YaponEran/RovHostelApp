@@ -28,9 +28,14 @@ end
 
 # Users
 
+crumb :employee_users do |user|
+  link I18n.t("#{PATH}.employee_users"), employee_users_path
+  parent :employee
+end
+
 crumb :employee_user do |user|
   link user.email, employee_user_path(user)
-  parent :employee
+  parent :employee_users
 end
 
 

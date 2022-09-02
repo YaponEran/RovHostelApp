@@ -95,3 +95,19 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+
+# Just cutom click method for test
+def click_wit_rov(text, wait_time: Capybara.default_max_wait_time)
+  success = false
+
+  (wait_time * 10).round.times do
+    click_on text
+    success = true
+    break
+  rescue Selenium::WebDriver::Error::WebDriverError
+    sleep(0.1)
+  end
+
+  click_on text unless success
+end

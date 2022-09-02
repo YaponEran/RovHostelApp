@@ -1,0 +1,31 @@
+= form_for [:employee, @user], local: true do |f|
+
+  .field
+    = f.label :first_name, class: "label"
+    .control
+      = f.text_field :first_name, class: "input"
+
+  .field
+    = f.label :last_name, class: "label"
+    .control
+      = f.text_field :last_name, class: "input"
+
+  .field
+    = f.label :email, class: "label"
+    .control
+      = f.email_field :email, class: "input"
+
+  .field
+    = f.label :mobile_phone, class: "label"
+    .control
+      = f.text_field :mobile_phone, placeholder: "+7 (707) 341-59-52", class: "input phone", data: {phone: true}
+
+  / .select.mb-4
+  .field
+    = f.label :role_id, class: "label"
+    .control.select
+      = f.collection_select :role_id, Role.all.order(:title), :id, :title, {}, class: "input"
+
+  .field.is-grouped
+    .control
+      = f.submit t("actions.submit"), class: "button is-primary"

@@ -2,3 +2,4 @@ ru:
   employee:
     failures:
       validation_error: Проверьте форму
+      role_has_dependent_users: Роль имеет зависимых пользователей. Пожалуйста, поменяйте роль у всех зависимых пользователей

@@ -6,6 +6,7 @@ class User < ApplicationRecord
   
   belongs_to :role
   has_many :permissions, through: :role
+  has_many :hotels, dependent: :destroy
 
   def is_admin?
     self.admin == true

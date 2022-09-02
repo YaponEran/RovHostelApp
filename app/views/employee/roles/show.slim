@@ -9,7 +9,7 @@ h1.title.is-3 = @role.title
   .control
     = link_to t("actions.edit"), edit_employee_role_path(@role), class: "button is-link is-small"
   .control.role_destroy
-    = link_to t("actions.destroy"), employee_role_path(@role), method: :delete, class: "button is-danger is-small"
+    = link_to t("actions.destroy"), employee_role_path(@role), method: :delete, data: {confirm: "Are you sure"}, class: "button is-danger is-small"
 
 
 // dont forget to render user lists

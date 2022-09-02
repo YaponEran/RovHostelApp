@@ -2,3 +2,5 @@ en:
   employee:
     failures:
       validation_error: Check the form
+      role_has_dependent_users: Role has dependent users
+      

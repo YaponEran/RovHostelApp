@@ -10,8 +10,13 @@ Rails.application.routes.draw do
     root to: "dashbord#index"
 
     resources :roles do
+      member do
+        delete "delete_role_user", to: "roles#destore_role_user"
+      end
       resources :permissions
     end
+
+    resources :hotels
 
     resources :users
   end

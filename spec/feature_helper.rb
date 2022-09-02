@@ -2,6 +2,7 @@ require 'rails_helper'
 require "capybara/cuprite"
 
 Capybara.javascript_driver = :cuprite
+# Capybara.javascript_driver = :selenium_chrome
 
 Capybara.register_driver(:cuprite) do |app|
   browser_options = {}.tap do |opts|

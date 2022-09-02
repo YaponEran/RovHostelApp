@@ -9,6 +9,7 @@ feature "Create Role" do
       create(:permission, subject: "employee/roles", action: "index", role: role)
       create(:permission, subject: "employee/roles", action: "new", role: role)
       create(:permission, subject: "employee/roles", action: "create", role: role)
+      visit new_user_session_path
       sign_in_with(user.email, user.password)
       visit employee_roles_path
     end

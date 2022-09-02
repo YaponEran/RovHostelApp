@@ -1,0 +1,5 @@
+ru:
+ employee:
+  users:
+    update:
+      success: Пользователь успешно изменен
