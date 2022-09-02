@@ -1,5 +1,5 @@
 en:
  employee:
   users:
-    create:
+    update:
       success: User was successfully updated

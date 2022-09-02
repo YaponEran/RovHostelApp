@@ -16,7 +16,7 @@ module Employee
       case result
       in Success
         flash[:notice] = t(".success")
-        redirect_to employee_root_path
+        redirect_to employee_users_path
       in Failure[error, payload]
         # flash[:error] = "While create new account went wrong with: #{error} - #{payload}"
         failure_resolver(error, **payload)
