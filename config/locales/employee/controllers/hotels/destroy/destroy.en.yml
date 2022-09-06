@@ -1,0 +1,6 @@
+---
+en:
+  employee:
+    hotels:
+      destroy:
+        success: Hotel successfully deleted

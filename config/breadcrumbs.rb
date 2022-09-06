@@ -27,7 +27,6 @@ crumb :employee_new_role do
 end
 
 # Users
-
 crumb :employee_users do |user|
   link I18n.t("#{PATH}.employee_users"), employee_users_path
   parent :employee
@@ -36,6 +35,17 @@ end
 crumb :employee_user do |user|
   link user.email, employee_user_path(user)
   parent :employee_users
+end
+
+# Hotels
+crumb :employee_hotels do
+  link I18n.t("#{PATH}.hotels"), employee_hotels_path
+  parent :employee
+end
+
+crumb :employee_hotel do |hotel|
+  link hotel.title, employee_hotels_path
+  parent :employee_hotels
 end
 
 

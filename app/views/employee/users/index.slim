@@ -16,7 +16,9 @@ table.table.is-fullwidth
         td = user.email
         td = user.mobile_phone
         td
-          -if user.role.role_rank.in?(0..3)
+          -if user.role.role_rank.in?(1..1)
+             small.tag.is-danger.mt-2 = user.role.title
+          -if user.role.role_rank.in?(2..3)
             small.tag.is-primary.mt-2 = user.role.title
           -if user.role.role_rank.in?(4..10)
             small.tag.is-info.mt-2 = user.role.title
