@@ -1,5 +1,6 @@
+---
 ru:
- employee:
-  users:
-    update:
-      success: Пользователь успешно изменен
+  employee:
+    users:
+      update:
+        success: Пользователь успешно изменен

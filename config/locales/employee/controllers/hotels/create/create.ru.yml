@@ -1,0 +1,6 @@
+---
+ru:
+  employee:
+    hotels:
+      create:
+        success: Гостиница успешно создана

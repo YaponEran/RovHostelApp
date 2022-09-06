@@ -1,0 +1,6 @@
+---
+ru:
+  employee:
+    roles:
+      update:
+        success: Роле успешно изменен

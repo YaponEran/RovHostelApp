@@ -16,5 +16,10 @@ table.table.is-fullwidth
       td.tag.is-success.mt-2 = @user.role.title
       td = @user.mobile_phone
 
-
 = link_to t("actions.edit"), edit_employee_user_path(@user), class: "button is-info is-small"
+
+
+-if @user.hotels_contain
+  p.title.mt-5= t(".hotels_list")
+  .columns
+    = render @user.hotels

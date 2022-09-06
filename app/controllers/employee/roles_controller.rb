@@ -68,7 +68,7 @@ module Employee
 
     private
     def role_params
-      params.require(:role).permit(:title)
+      params.require(:role).permit(:title, :role_rank)
     end
   end
 end

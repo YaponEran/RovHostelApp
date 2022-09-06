@@ -5,7 +5,8 @@ RSpec.describe Operations::Roles::Update, type: :service do
     let(:role) { create(:role) }
     let(:params) do
       {
-        title: "Updated role"
+        title: "Updated role",
+        role_rank: 2
       }
     end
     context "When all params correct" do

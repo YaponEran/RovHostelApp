@@ -1,0 +1,24 @@
+= form_for [:employee, @hotel], local: true do |f|
+  .field
+    = f.label :title, class: "label"
+    .control
+      = f.text_field :title, class: "input"
+
+  .field
+    = f.label :adress, class: "label"
+    .control
+      = f.text_field :adress, class: "input"
+  
+  .field
+    = f.label :postcode, class: "label"
+    .control
+      = f.text_field :postcode, class: "input"
+  
+  .field
+    = f.label :phone_number, class: "label"
+    .control
+      = f.text_field :phone_number, placeholder: "+7 (707) 341-59-52", class: "input phone", data: {phone: true}
+  
+  .field.is-grouped
+    .control
+      = f.submit "Submit", class: "button is-primary"

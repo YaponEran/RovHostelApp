@@ -1,5 +1,6 @@
+---
 en:
- employee:
-  users:
-    update:
-      success: User was successfully updated
+  employee:
+    users:
+      update:
+        success: User was successfully updated

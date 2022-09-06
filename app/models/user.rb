@@ -16,6 +16,10 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def hotels_contain
+    hotels.exists?
+  end
+
   def can?(subject, action)
     return  true if admin?
 

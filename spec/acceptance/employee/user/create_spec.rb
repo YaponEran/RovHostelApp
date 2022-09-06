@@ -24,9 +24,7 @@ feature "Create User" do
       fill_in "Password", with: "123456"
       click_on "Submit"
 
-      save_and_open_page
-
-      expect(page).to have_content "was successfully updated"
+      expect(page).to have_content "User was successfully created"
     end
 
     scenario "with bad params" do

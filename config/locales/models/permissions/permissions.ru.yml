@@ -1,19 +1,27 @@
+---
 ru:
   employee:
     permissions:
       actions:
+        employee/hotels:
+          create: Создать гостиницу
+          destroy: Удалит гостиницу
+          index: Просмотреть список гостиницу
+          show: Просмотреть детали гостиницу
+          update: Редактирование гостиницу
         employee/roles:
           create: Создать роль
-          update: Редактирование роли
           destroy: Удалить роль
-          show: Просмотреть детали роли
           index: Просмотреть список ролей
+          show: Просмотреть детали роли
+          update: Редактирование роли
         employee/users:
           create: Создать сотрудника
-          update: Редактирование сотрудника
           destroy: Удалить сотрудника
-          show: Просмотреть детали сотрудника
           index: Просмотреть список сотрудников
+          show: Просмотреть детали сотрудника
+          update: Редактирование сотрудника
       subjects:
+        employee/hotels: Отели
         employee/roles: Роли
         employee/users: Сотрудники

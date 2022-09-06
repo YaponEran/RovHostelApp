@@ -1,0 +1,6 @@
+---
+en:
+  employee:
+    hotels:
+      create:
+        success: Hotel created successfully

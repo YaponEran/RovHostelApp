@@ -4,7 +4,8 @@ RSpec.describe Operations::Roles::Create, type: :service do
   describe "#call" do
     let(:params) do
       {
-        title: "Admin"
+        title: "Admin",
+        role_rank: 0
       }
     end
     context "When all params correct" do
@@ -23,7 +24,7 @@ RSpec.describe Operations::Roles::Create, type: :service do
       it "returns :uniqueness_violation error" do
         result = subject.call({ title: role.title })
         expect(result).to be_a(Dry::Monads::Failure)
-        expect(result.failure[0]).to eq(:uniqueness_violation)
+        expect(result.failure[0]).to eq(:validation_error)
       end
     end
   end
