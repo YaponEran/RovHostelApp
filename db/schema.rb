@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_02_080553) do
+ActiveRecord::Schema.define(version: 2022_09_06_121508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "buildings", force: :cascade do |t|
+    t.string "build_title", null: false
+    t.string "build_postcode", null: false
+    t.string "address", null: false
+    t.string "phone_number", null: false
+    t.bigint "hotel_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hotel_id"], name: "index_buildings_on_hotel_id"
+  end
 
   create_table "hotels", force: :cascade do |t|
     t.string "title", null: false
@@ -65,6 +76,7 @@ ActiveRecord::Schema.define(version: 2022_09_02_080553) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "buildings", "hotels"
   add_foreign_key "hotels", "users"
   add_foreign_key "permissions", "roles"
   add_foreign_key "users", "roles"
