@@ -6,3 +6,4 @@ en:
         build_postcode: Building postcode
         address: Building address
         phone_number: Building phone number
+        action: Action

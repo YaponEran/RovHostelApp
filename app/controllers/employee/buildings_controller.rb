@@ -26,6 +26,22 @@ module Employee
       end
     end
 
+    def destroy
+      @building = Building.find_by(id: params[:id])
+
+      operations = Operations::Buildings::Destroy.new
+      result = operations.call(@building)
+
+      case result
+      in Success
+        flash[:success] = "Hotel building successfuly deleted"
+        redirect_to employee_hotel_path(@building.hotel)
+      in Failure[error, payload]
+        failure_resolver(error, **payload)
+        redirect_to employee_hotel_path(@building.hotel)
+      end
+    end
+
     private
 
     def building_params
