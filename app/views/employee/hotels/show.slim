@@ -1,0 +1,51 @@
+.column
+  .has-text-grey
+    span.title = @hotel.title
+    span.icon
+      i.fas.fa-home
+
+    .mt-3
+      .devider
+        span.icon-text
+          span.icon
+            i.fas.fa-address-book
+          h1.subtitle.is-6 = @hotel.adress
+
+      .devider
+        span.icon-text
+          span.icon
+            i.fas.fa-envelope
+          h1.subtitle.is-6 = @hotel.postcode
+      
+      .devider
+        span.icon-text
+          span.icon
+            i.fas.fa-phone
+          h1.subtitle.is-6 = @hotel.phone_number
+      .devider
+        span.icon-text
+          span.icon
+            i.fas.fa-user
+          = link_to @hotel.user.full_name, employee_user_path(@hotel.user), class: "subtitle is-6 has-text-info"
+
+  = link_to "Create new Building", new_employee_hotel_building_path(@hotel), class: "button is-info is-small mt-5"
+
+  h1.title.mt-5 = t(".buildings_list")
+
+  / = render @hotel.buildings
+  
+- if @hotel.buildings.exists?
+  table.table.is-fullwidth.mt-5
+    thead
+      tr
+        th = Building.human_attribute_name(:build_title)
+        th = Building.human_attribute_name(:build_postcode)
+        th = Building.human_attribute_name(:address)
+        th = Building.human_attribute_name(:phone_number)
+    tbody
+      -@hotel.buildings.each do |building|
+        tr
+          td = building.build_title
+          td = building.build_postcode
+          td = building.address
+          td = building.phone_number

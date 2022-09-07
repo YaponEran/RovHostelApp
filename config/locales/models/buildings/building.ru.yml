@@ -1,0 +1,8 @@
+ru:
+  activerecord:
+    attributes:
+      building:
+        build_title: Название здания
+        build_postcode: Почтовый индекс здания
+        address: Адрес здания
+        phone_number: Номер телефона здания

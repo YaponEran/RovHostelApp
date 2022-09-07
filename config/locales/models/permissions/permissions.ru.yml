@@ -9,6 +9,12 @@ ru:
           index: Просмотреть список гостиницу
           show: Просмотреть детали гостиницу
           update: Редактирование гостиницу
+        employee/buildings:
+          create: Создать здания
+          destroy: Удалит здания
+          index: Просмотреть список здания
+          show: Просмотреть детали здания
+          update: Редактирование здания
         employee/roles:
           create: Создать роль
           destroy: Удалить роль
@@ -23,5 +29,6 @@ ru:
           update: Редактирование сотрудника
       subjects:
         employee/hotels: Отели
+        employee/buildings: Здания
         employee/roles: Роли
         employee/users: Сотрудники

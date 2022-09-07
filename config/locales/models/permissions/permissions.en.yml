@@ -9,6 +9,12 @@ en:
           index: View hotel list
           show: View hotel details
           update: Update hotel
+        employee/buildings:
+          create: Create building
+          destroy: Delete building
+          index: View building list
+          show: View buildings details
+          update: Update building
         employee/roles:
           create: Create role
           destroy: Delete role
@@ -23,5 +29,6 @@ en:
           update: Update employee
       subjects:
         employee/hotels: Hotels
+        employee/buildings: Buildings
         employee/roles: Roles
         employee/users: Employees

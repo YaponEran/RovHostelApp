@@ -1,0 +1,8 @@
+en:
+  activerecord:
+    attributes:
+      building:
+        build_title: Building title
+        build_postcode: Building postcode
+        address: Building address
+        phone_number: Building phone number

@@ -16,7 +16,12 @@ Rails.application.routes.draw do
       resources :permissions
     end
 
-    resources :hotels
+    resources :hotels do
+      resources :buildings, shallow: true
+      collection do
+        get "buldings/index", to: "buildings#index"
+      end
+    end
 
     resources :users
   end

@@ -23,6 +23,10 @@ module Employee
       end
     end
 
+    def show
+      @hotel = Hotel.find_by(id: params[:id])
+    end
+
     def edit
       @hotel = Hotel.find_by(id: params[:id])
     end
