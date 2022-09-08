@@ -38,14 +38,16 @@
   table.table.is-fullwidth.mt-5
     thead
       tr
+        th = "#"
         th = Building.human_attribute_name(:build_title)
         th = Building.human_attribute_name(:build_postcode)
         th = Building.human_attribute_name(:address)
         th = Building.human_attribute_name(:phone_number)
         th = Building.human_attribute_name(:action)
     tbody
-      -@hotel.buildings.each do |building|
+      -@hotel.buildings.each_with_index do |building, index|
         tr
+          td= index += 1
           td = building.build_title
           td = building.build_postcode
           td = building.address
@@ -54,7 +56,6 @@
             / = link_to "Update", edit_employee_building_path(building), remote: true ,class: "button is-primary is-small mr-2 js-modal-trigger", data: { target: "edit-building=#{building.id}" }
             .button.is-primary.is-small.mr-2.js-modal-trigger.building_edit_button data-target="edit-building=#{building.id}" = t("actions.update")
             = link_to t("actions.destroy"), employee_building_path(building), method: :delete, data: { confirm: "Are you sure" }, class: "button is-danger is-small"
-
 
 -@hotel.buildings.each do |building|
   .modal id="edit-building=#{building.id}"
