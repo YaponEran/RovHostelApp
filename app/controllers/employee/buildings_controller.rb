@@ -26,6 +26,26 @@ module Employee
       end
     end
 
+    def edit
+      @building = Building.find_by(id: params[:id])
+    end
+
+    def update
+      @building = Building.find_by(id: params[:id])
+      
+      operations = Operations::Buildings::Update.new
+      result = operations.call(@building, building_params)
+
+      case result
+      in Success
+        flash[:success] = "Hotel buulding successfuly updated"
+        redirect_to employee_hotel_path(@building.hotel)
+      in Failure[error, payload]
+        failure_resolver(error, **payload)
+        redirect_to employee_hotel_path(@building.hotel)
+      end
+    end
+
     def destroy
       @building = Building.find_by(id: params[:id])
 

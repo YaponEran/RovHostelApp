@@ -17,7 +17,9 @@ feature "User create hotels building" do
     end
 
     scenario "With correct params" do
-      click_on "Delete"
+      accept_alert do
+        click_on "Delete"
+      end
       expect(page).to have_content("Hotel building successfuly deleted")
     end
   end

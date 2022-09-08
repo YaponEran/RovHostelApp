@@ -1,0 +1,9 @@
+en:
+  activerecord:
+    attributes:
+      hotel:
+        title: Hotel title
+        postcode: Hotel postcode
+        adress: Hotel address
+        phone_number: Hotel phone number
+        action: Action

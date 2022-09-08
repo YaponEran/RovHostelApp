@@ -16,10 +16,10 @@ feature "User create hotels" do
     end
 
     scenario "With correct params" do
-      fill_in "Title", with: "Almaty hotel"
-      fill_in "Adress", with: "City Almaty street: bz room 1001"
-      fill_in "Postcode", with: "0005001"
-      fill_in "Phone number", with: "+7(707)000-00-01"
+      fill_in "Hotel title", with: "Almaty hotel"
+      fill_in "Hotel address", with: "City Almaty street: bz room 1001"
+      fill_in "Hotel postcode", with: "0005001"
+      fill_in "Hotel phone number", with: "+7(707)000-00-01"
 
       click_on "Submit"
 
@@ -27,8 +27,8 @@ feature "User create hotels" do
     end
 
     scenario "Witn incorrect params" do
-      fill_in "Title", with: "Almaty hotel"
-      fill_in "Adress", with: "City Almaty street: bz room 1001"
+      fill_in "Hotel title", with: "Almaty hotel"
+      fill_in "Hotel address", with: "City Almaty street: bz room 1001"
       click_on "Submit"
 
       expect(page).to have_content "Check the form"

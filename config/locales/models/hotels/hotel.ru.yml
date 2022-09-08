@@ -1,0 +1,9 @@
+ru:
+  activerecord:
+    attributes:
+      hotel:
+        title: Название отеля
+        postcode: Почтовый индекс отеля
+        adress: Адрес отеля
+        phone_number: Номер телефона отеля
+        action: Действие

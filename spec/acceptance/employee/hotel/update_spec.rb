@@ -17,18 +17,18 @@ feature "User update hotel" do
     end
 
     scenario "with correct params" do
-      fill_in "Title", with: "Almaty hotel 2"
-      fill_in "Adress", with: "City Almaty street: bz room 2002"
-      fill_in "Postcode", with: "0005003"
-      fill_in "Phone number", with: "+7(707)000-00-01"
+      fill_in "Hotel title", with: "Almaty hotel 2"
+      fill_in "Hotel address", with: "City Almaty street: bz room 2002"
+      fill_in "Hotel postcode", with: "0005003"
+      fill_in "Hotel phone number", with: "+7(707)000-00-01"
 
       click_on "Submit"
       expect(page).to have_content "Hotel successfully updated"
     end
 
     scenario "with incorrect param" do
-      fill_in "Title", with: ""
-      fill_in "Adress", with: "City Almaty street: bz room 2002"
+      fill_in "Hotel title", with: ""
+      fill_in "Hotel address", with: "City Almaty street: bz room 2002"
       click_on "Submit"
       expect(page).to have_content "Check the form"
     end

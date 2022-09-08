@@ -29,4 +29,7 @@
           = link_to hotel.user.full_name, employee_user_path(hotel.user), class: "subtitle is-6"
 
     = link_to t("actions.edit"), edit_employee_hotel_path(hotel), class: "button is-outlined is-info is-small mt-3"
-    = link_to t("actions.delete"), employee_hotel_path(hotel), method: :delete, data: { confirm: "Are you sure"},  class: "button is-outlined is-danger is-small mt-3 ml-3"
+    = link_to t("actions.destroy"), employee_hotel_path(hotel), method: :delete, data: { confirm: "Are you sure"},  class: "button is-outlined is-danger is-small mt-3 ml-3"
+
+    .hotel-created-time.mt-2
+      small= hotel.created_at.strftime("%Y-%m-%d")
