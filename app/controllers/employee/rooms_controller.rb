@@ -19,7 +19,8 @@ module Employee
       case result
       in Success
         flash[:success] = "Room successfuly created"
-        redirect_to employee_hotel_path(@building.hotel)
+        # redirect_to employee_hotel_path(@building.hotel)
+        redirect_to employee_building_path(@building)
       in Failure[error, payload]
         failure_resolver(error, **payload)
         @room = Room.new
