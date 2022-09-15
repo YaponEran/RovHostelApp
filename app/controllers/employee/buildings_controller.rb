@@ -4,6 +4,10 @@ module Employee
       @buildings = Building.all
     end
 
+    def show
+      @building = Building.find_by(id: params[:id])
+    end
+
     def new
       @hotel = Hotel.find_by(id: params[:hotel_id])
       @building = Building.new

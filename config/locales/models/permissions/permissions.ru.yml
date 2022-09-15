@@ -27,8 +27,15 @@ ru:
           index: Просмотреть список сотрудников
           show: Просмотреть детали сотрудника
           update: Редактирование сотрудника
+        employee/rooms:
+          create: Создать комнат/кроват
+          destroy: Удалить комнат/кроват
+          index: Просмотреть список комнат/кроват
+          show: Просмотреть детали комнат/кроват
+          update: Редактирование комнат/кроват
       subjects:
         employee/hotels: Отели
         employee/buildings: Здания
         employee/roles: Роли
         employee/users: Сотрудники
+        employee/rooms: Комнаты

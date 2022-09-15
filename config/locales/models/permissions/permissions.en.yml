@@ -27,8 +27,15 @@ en:
           index: View employees list
           show: View employee details
           update: Update employee
+        employee/rooms:
+          create: Create room
+          destroy: Delete room
+          index: View employees list
+          show: View room details
+          update: Update room
       subjects:
         employee/hotels: Hotels
         employee/buildings: Buildings
         employee/roles: Roles
         employee/users: Employees
+        employee/rooms: rooms

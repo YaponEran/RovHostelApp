@@ -1,0 +1,29 @@
+.has-text-grey
+  span.title = @building.build_title
+  span.icon
+    i.fas.fa-home
+
+  .mt-3
+    .devider
+      span.icon-text
+        span.icon
+          i.fas.fa-envelope
+        h1.subtitle.is-6 = @building.build_postcode
+
+    .devider
+      span.icon-text
+        span.icon
+          i.fas.fa-address-book
+        h1.subtitle.is-6 = @building.address
+    
+    .devider
+      span.icon-text
+        span.icon
+          i.fas.fa-phone
+        h1.subtitle.is-6 = @building.phone_number
+
+= link_to "Create new room", new_employee_building_room_path(@building), class: "button is-primary is-small mt-3"
+
+
+.columns.mt-4
+  = render @building.rooms

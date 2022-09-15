@@ -1,0 +1,45 @@
+= form_for [:employee, @building, @room], local: true do |f|
+  .field
+    = f.label :overnight_kind, class: "label"
+    .control
+      = f.select :overnight_kind, options_for_select(Room::OVERNIGHT_KIND.map { |overnight_kinde| [t("room.OVERNIGHT_KIND.#{overnight_kinde}")]}), {}, class: "input"
+  
+  .field
+    = f.label :total_room, class: "label"
+    .control
+      = f.number_field :total_room, class: "input"
+
+  .field
+    = f.label :total_bed, class: "label"
+    .control
+      = f.number_field :total_bed, class: "input"
+
+  .field
+    = f.label :has_air_con, class: "label"
+    .control
+      = f.check_box :has_air_con
+
+  .field
+    = f.label :has_kitchen, class: "label"
+    .control
+      = f.check_box :has_kitchen
+
+  .field
+    = f.label :has_bath, class: "label"
+    .control
+      = f.check_box :has_bath
+  
+  .field
+    = f.label :has_wifi, class: "label"
+    .control
+      = f.check_box :has_wifi
+
+  .field
+    = f.label :price, class: "label"
+    .control
+      = f.text_field :price, class: "input"
+  
+  
+  field.is-grouped
+    .control
+      = f.submit "Submit", class: "button is-primary"

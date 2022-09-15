@@ -1,0 +1,8 @@
+en:
+  activerecord:
+    attributes:
+      room:
+  room:
+    OVERNIGHT_KIND:
+      Room: Room
+      Bed: Bed

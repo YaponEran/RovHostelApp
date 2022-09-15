@@ -4,6 +4,7 @@ class Permission < ApplicationRecord
     "employee/roles": %i[index show create update destroy],
     "employee/hotels": %i[index show create update destroy],
     "employee/buildings": %i[index show create update destroy],
+    "employee/rooms": %i[index show create update destroy],
   }
 
   belongs_to :role

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_06_121508) do
+ActiveRecord::Schema.define(version: 2022_09_08_091806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,21 @@ ActiveRecord::Schema.define(version: 2022_09_06_121508) do
     t.index ["title"], name: "index_roles_on_title", unique: true
   end
 
+  create_table "rooms", force: :cascade do |t|
+    t.string "overnight_kind", null: false
+    t.integer "total_room", default: 0, null: false
+    t.integer "total_bed", default: 0, null: false
+    t.boolean "has_air_con", default: false, null: false
+    t.boolean "has_kitchen", default: false, null: false
+    t.boolean "has_bath", default: false, null: false
+    t.boolean "has_wifi", default: false, null: false
+    t.bigint "building_id", null: false
+    t.decimal "price", default: "0.0"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["building_id"], name: "index_rooms_on_building_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name", default: "", null: false
     t.string "last_name", default: "", null: false
@@ -79,5 +94,6 @@ ActiveRecord::Schema.define(version: 2022_09_06_121508) do
   add_foreign_key "buildings", "hotels"
   add_foreign_key "hotels", "users"
   add_foreign_key "permissions", "roles"
+  add_foreign_key "rooms", "buildings"
   add_foreign_key "users", "roles"
 end

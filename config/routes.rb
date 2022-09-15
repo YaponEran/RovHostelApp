@@ -17,9 +17,8 @@ Rails.application.routes.draw do
     end
 
     resources :hotels do
-      resources :buildings, shallow: true
-      collection do
-        get "buldings/index", to: "buildings#index"
+      resources :buildings, shallow: true do
+        resources :rooms, shallow: true
       end
     end
 

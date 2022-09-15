@@ -1,0 +1,8 @@
+ru:
+  activerecord:
+    attributes:
+      room:
+  room:
+    OVERNIGHT_KIND:
+      Room: Комната
+      Bed: Кроватка
