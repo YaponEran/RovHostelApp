@@ -23,10 +23,10 @@ feature "User create room" do
       select "Bed", :from => "Overnight kind"
       fill_in "Total room", with: 1
       fill_in "Total bed", with: 1
-      page.uncheck('Has air con')
-      page.uncheck('Has kitchen')
-      page.uncheck('Has bath')
-      page.check('Has wifi')
+      page.check('Air conditioner')
+      page.check('Kitchen')
+      page.check('Bath room')
+      page.check('Wifi router')
       fill_in "Price", with: 200.00
       
       click_on "Submit"

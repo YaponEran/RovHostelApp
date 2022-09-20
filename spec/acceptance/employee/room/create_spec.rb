@@ -19,13 +19,15 @@ feature "User create room" do
       select "Room", :from => "Overnight kind"
       fill_in "Total room", with: 1
       fill_in "Total bed", with: 2
-      page.check('Has air con')
-      page.check('Has kitchen')
-      page.check('Has bath')
-      page.check('Has wifi')
+      page.check('Air conditioner')
+      page.check('Kitchen')
+      page.check('Bath room')
+      page.check('Wifi router')
       fill_in "Price", with: 100.00
       
       click_on "Submit"
+
+      # save_and_open_page
 
       expect(page).to have_content("Room successfuly created")
     end

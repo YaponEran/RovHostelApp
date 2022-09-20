@@ -2,6 +2,14 @@ ru:
   activerecord:
     attributes:
       room:
+        overnight_kind: Тип прибивание
+        total_room: Количество комнатов
+        total_bed: Количество кровати
+        has_bath: Ванна/душ
+        has_kitchen: Кухня
+        has_air_con: Кондиционер
+        has_wifi: Вайфай роутер
+        price: Цена на ночевку
   room:
     OVERNIGHT_KIND:
       Room: Комната

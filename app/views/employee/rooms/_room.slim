@@ -23,8 +23,8 @@
         span.icon.title.mt-2
           i.fas.fa-tag
 
-    = link_to t("actions.destroy"), employee_room_path(room), method: :delete, data: { confirm: "Are you sure?"}, class: "button is-small is-danger"
-    =link_to t("actions.update"), edit_employee_room_path(room), class: "button is-small is-primary ml-2"
+    = link_to t("actions.destroy"), employee_room_path(room), method: :delete, data: { confirm: "Are you sure?"}, class: "button is-outlined is-small is-danger"
+    =link_to t("actions.update"), edit_employee_room_path(room), class: "button is-outlined is-small is-primary ml-2"
 
 / .column
 /   - if room.overnight_kind == "Комната"

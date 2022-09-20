@@ -1,0 +1,5 @@
+ru:
+  employee:
+    buildings:
+      show:
+        create_new_room: Создат новый комнату

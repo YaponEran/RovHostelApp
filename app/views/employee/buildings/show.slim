@@ -1,3 +1,5 @@
+- breadcrumb :employee_building, @building.hotel, @building
+
 .has-text-grey
   span.title = @building.build_title
   span.icon
@@ -22,7 +24,7 @@
           i.fas.fa-phone
         h1.subtitle.is-6 = @building.phone_number
 
-= link_to "Create new room", new_employee_building_room_path(@building), class: "button is-primary is-small mt-3"
+= link_to t(".create_new_room"), new_employee_building_room_path(@building), class: "button is-primary is-small mt-3"
 
 
 .columns.mt-4
