@@ -12,6 +12,7 @@ RSpec.describe Operations::Rooms::Update, type: :service do
         has_kitchen: false,
         has_bath: false,
         has_wifi: false,
+        bed_number: 12,
         price: 1000.0
       }
     end

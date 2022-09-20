@@ -12,6 +12,7 @@ RSpec.describe Operations::Rooms::Create, type: :service do
         has_kitchen: true,
         has_bath: true,
         has_wifi: true,
+        bed_number: 12,
         price: 0.0
       }
     end

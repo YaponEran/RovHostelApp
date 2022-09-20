@@ -10,6 +10,7 @@ en:
         has_air_con: Air conditioner
         has_wifi: Wifi router
         price: Price for overnight
+        bed_number: Bed number
   room:
     OVERNIGHT_KIND:
       Room: Room

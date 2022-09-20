@@ -9,6 +9,11 @@
     .control
       = f.number_field :total_room, class: "input"
 
+  .field.bed-number.is-hidden
+    = f.label :bed_number, class: "label"
+    .control
+      = f.number_field :bed_number, class: "input"
+
   .field
     = f.label :total_bed, class: "label"
     .control

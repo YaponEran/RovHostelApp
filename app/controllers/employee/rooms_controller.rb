@@ -66,7 +66,7 @@ module Employee
     private
 
     def room_params
-      params.require(:room).permit(:overnight_kind, :total_room, :total_bed, :has_air_con, :has_kitchen, :has_bath, :has_wifi, :price)
+      params.require(:room).permit(:overnight_kind, :total_room, :total_bed, :has_air_con, :has_kitchen, :has_bath, :has_wifi, :price, :bed_number)
     end
     
   end
