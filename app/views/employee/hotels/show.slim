@@ -1,0 +1,96 @@
+- breadcrumb :employee_hotel, @hotel
+.column
+  .has-text-grey
+    span.title = @hotel.title
+    span.icon
+      i.fas.fa-home
+
+    .mt-3
+      .devider
+        span.icon-text
+          span.icon
+            i.fas.fa-address-book
+          h1.subtitle.is-6 = @hotel.adress
+
+      .devider
+        span.icon-text
+          span.icon
+            i.fas.fa-envelope
+          h1.subtitle.is-6 = @hotel.postcode
+      
+      .devider
+        span.icon-text
+          span.icon
+            i.fas.fa-phone
+          h1.subtitle.is-6 = @hotel.phone_number
+      .devider
+        span.icon-text
+          span.icon
+            i.fas.fa-user
+          = link_to @hotel.user.full_name, employee_user_path(@hotel.user), class: "subtitle is-6 has-text-info"
+
+  = link_to t(".create_new_building"), new_employee_hotel_building_path(@hotel), class: "button is-info is-small mt-5"
+
+  h1.title.mt-5 = t(".buildings_list")
+
+  / = render @hotel.buildings
+  
+- if @hotel.buildings.exists?
+  table.table.is-fullwidth.mt-5
+    thead
+      tr
+        th = "#"
+        th = Building.human_attribute_name(:build_title)
+        th = Building.human_attribute_name(:build_postcode)
+        th = Building.human_attribute_name(:address)
+        th = Building.human_attribute_name(:phone_number)
+        th = Building.human_attribute_name(:action)
+        th = Building.human_attribute_name(:count_of_stuffs)
+    tbody
+      -@hotel.buildings.each_with_index do |building, index|
+        tr
+          td= index += 1
+          td
+            = link_to building.build_title, employee_building_path(building)
+          td = building.build_postcode
+          td = building.address
+          td = building.phone_number
+          td
+            .button.is-primary.is-small.mr-2.js-modal-trigger.building_edit_button data-target="edit-building=#{building.id}" = t("actions.update")
+            = link_to t("actions.destroy"), employee_building_path(building), method: :delete, data: { confirm: "Are you sure" }, class: "button is-danger is-small"
+          td
+            .tag.is-warning
+              = "Комнатов: #{building.rooms.where(overnight_kind: "Комната").count}"
+            .tag.is-info.ml-2
+              = "Кроватов: #{building.rooms.where(overnight_kind: "Кроватка").count}"
+
+-@hotel.buildings.each do |building|
+  .modal id="edit-building=#{building.id}"
+    .modal-background
+    .modal-content
+      .box
+        = form_for [:employee, building], local: true do |f|
+          .field
+            = f.label :build_title, class: "label"
+            .control
+              = f.text_field :build_title, class: "input"
+
+          .field
+            = f.label :build_postcode, class: "label"
+            .control
+              = f.text_field :build_postcode, class: "input"
+          
+          .field
+            = f.label :address, class: "label"
+            .control
+              = f.text_field :address, class: "input"
+
+          .field
+            = f.label :phone_number, class: "label"
+            .control
+              = f.text_field :phone_number, class: "input"  
+
+          .field.is-grouped
+            .control
+              = f.submit t("actions.submit"), class: "button is-primary"
+

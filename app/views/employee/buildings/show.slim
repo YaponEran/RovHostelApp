@@ -1,0 +1,90 @@
+- breadcrumb :employee_building, @building.hotel, @building
+
+.has-text-grey
+  span.title = @building.build_title
+  span.icon
+    i.fas.fa-home
+
+  .mt-3
+    .devider
+      span.icon-text
+        span.icon
+          i.fas.fa-envelope
+        h1.subtitle.is-6 = @building.build_postcode
+
+    .devider
+      span.icon-text
+        span.icon
+          i.fas.fa-address-book
+        h1.subtitle.is-6 = @building.address
+    
+    .devider
+      span.icon-text
+        span.icon
+          i.fas.fa-phone
+        h1.subtitle.is-6 = @building.phone_number
+
+= link_to t(".create_new_room"), new_employee_building_room_path(@building), class: "button is-primary is-small mt-3"
+
+
+.columns.mt-4
+  = render @building.rooms
+
+
+/ - @building&.rooms.each do |room|
+/   .columns.mt-4
+/     .column
+/       - if room.overnight_kind == "Комната"
+/         .box
+/           p.title = room.overnight_kind
+/           p.subtitle = "Total room count: #{room.total_room}"
+/           p.subtitle = "Total bed count: #{room.total_bed}"
+/           -if room.has_bath
+/             span.icon.title.mr-5
+/               i.fas.fa-bath
+/           -if room.has_kitchen
+/             span.icon.title.mr-5
+/               i.fas.fa-kitchen-set
+/           -if room.has_air_con
+/             span.icon.title.mr-5
+/               i.fas.fa-fan
+/           -if room.has_wifi
+/             span.icon.title
+/               i.fas.fa-wifi
+
+
+/           .price 
+/             span.icon-text
+/               p.title = "Price: #{room.price.to_d}"
+/               span.icon.title.mt-2
+/                 i.fas.fa-tag
+          
+/           = link_to t("actions.destroy"), employee_room_path(room), method: :delete, data: { confirm: "Are you sure?"}, class: "button is-small is-danger"
+/           =link_to t("actions.update"), edit_employee_room_path(room), class: "button is-small is-primary ml-2"
+
+/       - if room.overnight_kind == "Кроватка"
+/         .box
+/           p.title = room.overnight_kind
+/           p.subtitle = "Total room count: #{room.total_room}"
+/           p.subtitle = "Total bed count: #{room.total_bed}"
+/           -if room.has_bath
+/             span.icon.title.mr-5
+/               i.fas.fa-bath
+/           -if room.has_kitchen
+/             span.icon.title.mr-5
+/               i.fas.fa-kitchen-set
+/           -if room.has_air_con
+/             span.icon.title.mr-5
+/               i.fas.fa-fan
+/           -if room.has_wifi
+/             span.icon.title
+/               i.fas.fa-wifi
+
+/           .price 
+/             span.icon-text
+/               p.title = "Price: #{room.price.to_d}"
+/               span.icon.title.mt-2
+/                 i.fas.fa-tag
+          
+/           = link_to t("actions.destroy"), employee_room_path(room),  method: :delete, data: { confirm: "Are you sure?"}, class: "button is-small is-danger"
+/           =link_to t("actions.update"), edit_employee_room_path(room), class: "button is-small is-primary ml-2"

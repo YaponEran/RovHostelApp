@@ -1,9 +1,16 @@
-= form_for [:employee, @role], local: true do |f|
-  .field
-    = f.label :title, class: "label"
-    .control
-      = f.text_field :title, class: "input"
+= form_for [:employee, resource], local: true do |f|
+  .columns
+    .column.is-4
+      .field
+        = f.label :title, class: "label"
+        .control
+          = f.text_field :title, class: "input"
 
-  .field.is-grouped
-    .control
-      = f.submit "Submit", class: "button is-primary"
+      .field
+        = f.label :role_rank, class: "label"
+          .control
+            = f.number_field :role_rank, class: "input"
+
+        .field.is-grouped
+          .control
+            = f.submit t("actions.submit"), class: "button is-primary"

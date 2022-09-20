@@ -1,0 +1,6 @@
+---
+en:
+  employee:
+    roles:
+      destroy:
+        success: Role deleted successfully

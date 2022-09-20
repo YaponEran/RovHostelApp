@@ -1,0 +1,6 @@
+---
+ru:
+  employee:
+    hotels:
+      destroy:
+        success: Гостиница успешно удален

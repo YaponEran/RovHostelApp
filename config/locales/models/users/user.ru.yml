@@ -1,10 +1,11 @@
+---
 ru:
   activerecord:
     attributes:
       user:
+        email: Почта
         first_name: Имя
         last_name: Фамилия
-        email: Почта
-        password: Пароль
         mobile_phone: Мобильный телефон
+        password: Пароль
         role_id: Роль

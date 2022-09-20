@@ -1,0 +1,7 @@
+---
+ru:
+  employee:
+    roles:
+      show:
+        permission_list: Список разрешений
+        users_list: Список сотрудников

@@ -1,0 +1,14 @@
+table.table.is-fullwidth.mt-5
+  thead
+    tr
+      th = Building.human_attribute_name(:build_title)
+      th = Building.human_attribute_name(:build_postcode)
+      th = Building.human_attribute_name(:address)
+      th = Building.human_attribute_name(:phone_number)
+  tbody
+    tr
+      td = building.build_title
+      td = building.build_postcode
+      td = building.address
+      td = building.phone_number
+      

@@ -27,11 +27,48 @@ module Employee
 
     def show
       @role = Role.find_by(id: params[:id])
+      @permissions = @role.permissions
+    end
+
+    def edit
+      @role = Role.find_by(id: params[:id])
+    end
+
+    def update
+      @role = Role.find_by(id: params[:id])
+
+      operations = Operations::Roles::Update.new
+      result = operations.call(@role, role_params)
+
+      case result
+      in Success
+        flash[:success] = t(".success")
+        redirect_to employee_roles_path
+      in Failure[error, payload]
+        failure_resolver(error, **payload)
+        redirect_to employee_role_path(@role)
+      end
+    end
+
+    def destroy
+      @role = Role.find_by(id: params[:id])
+
+      operations = Operations::Roles::Destroy.new
+      result = operations.call(@role)
+
+      case result
+      in Success
+        flash[:success] = t(".success")
+        redirect_to employee_roles_path
+      in Failure[error, payload]
+        failure_resolver(error, **payload)
+        redirect_to employee_roles_path
+      end
     end
 
     private
     def role_params
-      params.require(:role).permit(:title)
+      params.require(:role).permit(:title, :role_rank)
     end
   end
 end

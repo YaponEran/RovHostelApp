@@ -1,0 +1,41 @@
+---
+ru:
+  employee:
+    permissions:
+      actions:
+        employee/hotels:
+          create: Создать гостиницу
+          destroy: Удалит гостиницу
+          index: Просмотреть список гостиницу
+          show: Просмотреть детали гостиницу
+          update: Редактирование гостиницу
+        employee/buildings:
+          create: Создать здания
+          destroy: Удалит здания
+          index: Просмотреть список здания
+          show: Просмотреть детали здания
+          update: Редактирование здания
+        employee/roles:
+          create: Создать роль
+          destroy: Удалить роль
+          index: Просмотреть список ролей
+          show: Просмотреть детали роли
+          update: Редактирование роли
+        employee/users:
+          create: Создать сотрудника
+          destroy: Удалить сотрудника
+          index: Просмотреть список сотрудников
+          show: Просмотреть детали сотрудника
+          update: Редактирование сотрудника
+        employee/rooms:
+          create: Создать комнат/кроват
+          destroy: Удалить комнат/кроват
+          index: Просмотреть список комнат/кроват
+          show: Просмотреть детали комнат/кроват
+          update: Редактирование комнат/кроват
+      subjects:
+        employee/hotels: Отели
+        employee/buildings: Здания
+        employee/roles: Роли
+        employee/users: Сотрудники
+        employee/rooms: Комнаты

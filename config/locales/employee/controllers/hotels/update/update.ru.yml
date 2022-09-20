@@ -1,0 +1,6 @@
+---
+ru:
+  employee:
+    hotels:
+      update:
+        success: Гостиница успешно обновлен

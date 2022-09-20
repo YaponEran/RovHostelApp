@@ -1,0 +1,6 @@
+---
+en:
+  employee:
+    hotels:
+      update:
+        success: Hotel successfully updated

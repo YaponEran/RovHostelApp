@@ -1,0 +1,24 @@
+-breadcrumb :employee_user, current_user
+
+
+table.table.is-fullwidth
+  thead
+    tr
+      th = User.human_attribute_name(:first_name)
+      th = User.human_attribute_name(:email)
+      th = User.human_attribute_name(:mobile_phone)
+      th = User.human_attribute_name(:role_id)
+  tbody
+    - @users.each do |user|
+      tr
+        td
+          = link_to user.full_name, employee_user_path(user)
+        td = user.email
+        td = user.mobile_phone
+        td
+          -if user.role.role_rank.in?(1..1)
+             small.tag.is-danger.mt-2 = user.role.title
+          -if user.role.role_rank.in?(2..3)
+            small.tag.is-primary.mt-2 = user.role.title
+          -if user.role.role_rank.in?(4..10)
+            small.tag.is-info.mt-2 = user.role.title

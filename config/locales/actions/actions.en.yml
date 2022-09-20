@@ -1,0 +1,9 @@
+en:
+  actions:
+    add: Add
+    back: Back
+    edit: Edit
+    destroy: Delete
+    create: Create
+    submit: Submit
+    update: Update

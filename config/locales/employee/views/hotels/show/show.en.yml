@@ -1,0 +1,6 @@
+en:
+  employee:
+    hotels:
+      show:
+        buildings_list: Buildings list
+        create_new_building: Create new building

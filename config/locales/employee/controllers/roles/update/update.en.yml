@@ -1,0 +1,6 @@
+---
+en:
+  employee:
+    roles:
+      update:
+        success: Role successfully updated

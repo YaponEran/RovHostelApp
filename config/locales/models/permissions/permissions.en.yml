@@ -1,0 +1,41 @@
+---
+en:
+  employee:
+    permissions:
+      actions:
+        employee/hotels:
+          create: Create hotel
+          destroy: Delete hotel
+          index: View hotel list
+          show: View hotel details
+          update: Update hotel
+        employee/buildings:
+          create: Create building
+          destroy: Delete building
+          index: View building list
+          show: View buildings details
+          update: Update building
+        employee/roles:
+          create: Create role
+          destroy: Delete role
+          index: View roles list
+          show: View role details
+          update: Update role
+        employee/users:
+          create: Create employee
+          destroy: Delete employee
+          index: View employees list
+          show: View employee details
+          update: Update employee
+        employee/rooms:
+          create: Create room
+          destroy: Delete room
+          index: View employees list
+          show: View room details
+          update: Update room
+      subjects:
+        employee/hotels: Hotels
+        employee/buildings: Buildings
+        employee/roles: Roles
+        employee/users: Employees
+        employee/rooms: rooms

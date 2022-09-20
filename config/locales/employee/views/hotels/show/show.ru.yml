@@ -1,0 +1,6 @@
+ru:
+  employee:
+    hotels:
+      show:
+        buildings_list: Список зданий
+        create_new_building: Создать новое здание

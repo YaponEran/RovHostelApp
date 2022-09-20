@@ -13,6 +13,9 @@
 # it.
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
+Dir["./spec/support/shared/authentication.rb"].each { |f| require f }
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
@@ -91,4 +94,20 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+end
+
+
+# Just cutom click method for test
+def click_wit_rov(text, wait_time: Capybara.default_max_wait_time)
+  success = false
+
+  (wait_time * 10).round.times do
+    click_on text
+    success = true
+    break
+  rescue Selenium::WebDriver::Error::WebDriverError
+    sleep(0.1)
+  end
+
+  click_on text unless success
 end

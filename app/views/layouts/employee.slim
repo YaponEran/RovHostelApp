@@ -8,6 +8,7 @@ html
     / = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'employee', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'employee', 'data-turbolinks-track': 'reload'
+    <script src="https://kit.fontawesome.com/676e1b00af.js" crossorigin="anonymous"></script>
     
     body
       = render 'shared/header'
@@ -15,6 +16,9 @@ html
       - flash.each do |type, msg|
         .notification class="#{type == 'error' ? 'is-danger' : 'is-info'}"
           = msg
-
+      / .image.is-5by4 style="" 
+        / img src="https://images.unsplash.com/photo-1582719388123-e03e25d06d51?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
       .container
+        nav.breadcrumb.has-arrow-separator.mt-2
+          = raw(breadcrumbs(style: :ul, current_class: "is-active", link_current: true))
         = yield

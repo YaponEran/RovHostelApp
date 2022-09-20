@@ -9,7 +9,18 @@ Rails.application.routes.draw do
   namespace :employee do
     root to: "dashbord#index"
 
-    resources :roles
+    resources :roles do
+      member do
+        delete "delete_role_user", to: "roles#destore_role_user"
+      end
+      resources :permissions
+    end
+
+    resources :hotels do
+      resources :buildings, shallow: true do
+        resources :rooms, shallow: true
+      end
+    end
 
     resources :users
   end
