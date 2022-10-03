@@ -1,30 +1,44 @@
 .column
-  .box
-    p.title = room.overnight_kind
-    p.subtitle = "Total room count: #{room.total_room}"
-    p.subtitle = "Total bed count: #{room.total_bed}"
-    -if room.has_bath
-      span.icon.title.mr-5
-        i.fas.fa-bath
-    -if room.has_kitchen
-      span.icon.title.mr-5
-        i.fas.fa-kitchen-set
-    -if room.has_air_con
-      span.icon.title.mr-5
-        i.fas.fa-fan
-    -if room.has_wifi
-      span.icon.title
-        i.fas.fa-wifi
+  .card
+    .card_image
+      .figure.image.is-4by3
+        - if room.overnight_kind == "Комната"
+          = link_to image_tag("https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"), employee_room_path(room)
+
+          / img src="https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+        - if room.overnight_kind == "Кроватка"
+          = link_to image_tag("https://images.unsplash.com/photo-1520277739336-7bf67edfa768?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2232&q=80"), employee_room_path(room)
+
+          / img src="https://images.unsplash.com/photo-1520277739336-7bf67edfa768?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2232&q=80"
+    .card-content
+      p.title = room.overnight_kind
+      - if room.overnight_kind == "Комната"
+        p.subtitle = "Total room count: #{room.total_room}"
+      p.subtitle = "Total bed count: #{room.total_bed}"
+      - if room.overnight_kind == "Кроватка"
+        p.subtitle = "Bed number: #{room.bed_number}"
+      -if room.has_bath
+        span.icon.title.mr-5
+          i.fas.fa-bath
+      -if room.has_kitchen
+        span.icon.title.mr-5
+          i.fas.fa-kitchen-set
+      -if room.has_air_con
+        span.icon.title.mr-5
+          i.fas.fa-fan
+      -if room.has_wifi
+        span.icon.title
+          i.fas.fa-wifi
 
 
-    .price 
-      span.icon-text
-        p.title = "Price: #{room.price.to_d}"
-        span.icon.title.mt-2
-          i.fas.fa-tag
+      .price 
+        span.icon-text
+          p.title = "Price: #{room.price.to_d}"
+          span.icon.title.mt-2
+            i.fas.fa-tag
 
-    = link_to t("actions.destroy"), employee_room_path(room), method: :delete, data: { confirm: "Are you sure?"}, class: "button is-outlined is-small is-danger"
-    =link_to t("actions.update"), edit_employee_room_path(room), class: "button is-outlined is-small is-primary ml-2"
+      = link_to t("actions.destroy"), employee_room_path(room), method: :delete, data: { confirm: "Are you sure?"}, class: "button is-outlined is-small is-danger"
+      =link_to t("actions.update"), edit_employee_room_path(room), class: "button is-outlined is-small is-primary ml-2"
 
 / .column
 /   - if room.overnight_kind == "Комната"

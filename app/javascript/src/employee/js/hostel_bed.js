@@ -16,4 +16,14 @@ document.addEventListener("turbolinks:load", () => {
             bedNumber.classList.add("is-hidden")
         }
     })
+
+    if(overNightType.value == "Кроватка"){
+        totalRoomCount.classList.add("is-hidden")
+        document.getElementsByTagName('label')[1].classList.add("is-hidden")    
+        bedNumber.classList.remove("is-hidden")
+    }else{
+        totalRoomCount.classList.remove("is-hidden")
+        document.getElementsByTagName('label')[1].classList.remove("is-hidden")
+        bedNumber.classList.add("is-hidden")
+    }
 })
