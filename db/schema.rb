@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_03_101715) do
+ActiveRecord::Schema.define(version: 2022_10_05_080004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,17 @@ ActiveRecord::Schema.define(version: 2022_10_03_101715) do
     t.index ["subject"], name: "index_permissions_on_subject"
   end
 
+  create_table "reservations", force: :cascade do |t|
+    t.bigint "customer_user_id", null: false
+    t.bigint "room_id", null: false
+    t.datetime "start_at", null: false
+    t.datetime "end_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_user_id"], name: "index_reservations_on_customer_user_id"
+    t.index ["room_id"], name: "index_reservations_on_room_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
@@ -110,6 +121,8 @@ ActiveRecord::Schema.define(version: 2022_10_03_101715) do
   add_foreign_key "buildings", "hotels"
   add_foreign_key "hotels", "users"
   add_foreign_key "permissions", "roles"
+  add_foreign_key "reservations", "customer_users"
+  add_foreign_key "reservations", "rooms"
   add_foreign_key "rooms", "buildings"
   add_foreign_key "users", "roles"
 end

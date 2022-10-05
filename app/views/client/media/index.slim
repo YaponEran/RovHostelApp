@@ -1,5 +1,38 @@
 h1.title = @media
-h1.title = current_customer_user.email
 
 - @rooms.each do |room|
-  small.mr-2 = room.overnight_kind
+  .card style="width: 400px; display: inline-block; margin: 10px"
+    .card_image
+      .figure.image.is-4by3
+        - if room.overnight_kind == "Комната"
+          = link_to image_tag("https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"), client_room_path(room)
+
+        - if room.overnight_kind == "Кроватка"
+          = link_to image_tag("https://images.unsplash.com/photo-1520277739336-7bf67edfa768?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2232&q=80"), client_room_path(room)
+
+    .card-content
+      p.title = room.overnight_kind
+      - if room.overnight_kind == "Комната"
+        p.subtitle = "Total room count: #{room.total_room}"
+      p.subtitle = "Total bed count: #{room.total_bed}"
+      - if room.overnight_kind == "Кроватка"
+        p.subtitle = "Bed number: #{room.bed_number}"
+      -if room.has_bath
+        span.icon.title.mr-5
+          i.fas.fa-bath
+      -if room.has_kitchen
+        span.icon.title.mr-5
+          i.fas.fa-kitchen-set
+      -if room.has_air_con
+        span.icon.title.mr-5
+          i.fas.fa-fan
+      -if room.has_wifi
+        span.icon.title
+          i.fas.fa-wifi
+
+
+      .price 
+        span.icon-text
+          p.title = "Price: #{room.price.to_d}"
+          span.icon.title.mt-2
+          i.fas.fa-tag

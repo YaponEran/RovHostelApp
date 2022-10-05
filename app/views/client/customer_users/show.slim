@@ -1,0 +1,15 @@
+span.image.is-128x128
+  img.is-rounded src="https://bulma.io/images/placeholders/128x128.png"
+span
+  p.title = current_customer_user.full_name
+  p.subtitle = current_customer_user.email
+  p.subtitle = current_customer_user.mobile_phone
+
+
+hr
+- if current_customer_user.reservations.any?
+  p.title = "Have reserve"
+- else 
+  p.title = "No reserve"
+  .title = current_customer_user.reservations.count
+

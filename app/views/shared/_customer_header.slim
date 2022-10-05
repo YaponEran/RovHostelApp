@@ -16,7 +16,7 @@ nav.navbar.is-success.is-spaced.styled_nav aria-label=("main navigation") role="
             = current_customer_user.full_name
           .navbar-dropdown
             .navbar-item
-              = link_to current_customer_user.email
+              = link_to current_customer_user.email,  client_customer_user_path(current_customer_user)
             hr.dropdown-divider
             .navbar-item
               = link_to t(".sign_out"), destroy_customer_user_session_path, title: "sign_out_main", method: :delete, class: "has-text-dark"

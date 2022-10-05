@@ -7,5 +7,9 @@ module Client
       # @customer = @user.customer
       # @users = CustomerUser.default.with_customer(@customer)
     end
+
+    def show
+      @room = Room.find_by(id: params[:id])
+    end
   end
 end

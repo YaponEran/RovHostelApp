@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   namespace :client do
     root to: "media#index"
     resources :customer_users
+    resources :rooms, only: [:show]
+    resources :reservations
   end
 
   namespace :employee do

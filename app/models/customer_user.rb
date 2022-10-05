@@ -4,6 +4,8 @@ class CustomerUser < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
+  has_many :reservations, dependent: :destroy
+  
   def full_name
     "#{first_name} #{last_name}" 
   end
