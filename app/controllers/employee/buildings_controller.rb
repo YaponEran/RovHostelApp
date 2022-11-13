@@ -1,11 +1,13 @@
 module Employee
   class BuildingsController < BaseController
+    before_action :find_individual
+
     def index
       @buildings = Building.all
     end
 
     def show
-      @building = Building.find_by(id: params[:id])
+      @building = Building.with_individual(@individual).find_by(id: params[:id])
     end
 
     def new
@@ -66,7 +68,15 @@ module Employee
       end
     end
 
+    def reserves
+      @reserves = Reservation.all
+    end
+
     private
+
+    def find_individual
+      @individual = current_user.individual
+    end
 
     def building_params
       params.require(:building).permit(:build_title, :build_postcode, :address, :phone_number)

@@ -1,8 +1,9 @@
 module Employee
   class RolesController < BaseController
+    before_action :find_individual
 
     def index
-      @roles = Role.all
+      @roles = Role.with_individual(@individual).all
     end
 
     def new
@@ -11,14 +12,13 @@ module Employee
 
     def create
       operations = Operations::Roles::Create.new
-      result = operations.call(role_params.to_h)
+      result = operations.call(role_params.to_h, @individual)
 
       case result
       in Success
         flash[:success] = t(".success")
         redirect_to employee_roles_path
       in Failure[error, payload]
-        # flash[:error] = "While create role went wrong with: #{error} - #{payload}"
         failure_resolver(error, **payload)
         @role = Role.new(role_params)
         render :new
@@ -26,7 +26,7 @@ module Employee
     end
 
     def show
-      @role = Role.find_by(id: params[:id])
+      @role = Role.with_individual(@individual).find_by(id: params[:id])
       @permissions = @role.permissions
     end
 
@@ -67,6 +67,11 @@ module Employee
     end
 
     private
+
+    def find_individual
+      @individual = current_user.individual
+    end
+
     def role_params
       params.require(:role).permit(:title, :role_rank)
     end

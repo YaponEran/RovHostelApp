@@ -1,0 +1,8 @@
+- if @individual.users.exists?
+  .tag.is-dark.mt-2
+    p = @individual.individual_admin_user?.first_name
+
+- if @individual
+= render "individual_hotels"
+= render "individual_buildings"
+= render "individual_rooms"

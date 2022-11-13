@@ -5,12 +5,20 @@ module Operations
 
       def call(room)
         room = yield cehck_room(room)
+        yield check_individual(room.individual)
+
         yield commit(room)
         
         Success()
       end
 
       private
+
+      def check_individual(individual)
+        individual = Individual.find_by(id: individual)
+        individual ? Success(individual) : Failure[:individual_not_found, {}]
+      end
+
       def cehck_room(room)
         room = Room.find_by(id: room.id)
         if room

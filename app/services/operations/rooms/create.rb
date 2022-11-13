@@ -4,11 +4,12 @@ module Operations
       include Dry::Monads[:result, :do]
 
       def call(building, params)
-       validated_params = yield validate(params.to_h)
-       building = yield check_building(building)
-       room = yield commit(validated_params.to_h.merge(building_id: building.id))
+        validated_params = yield validate(params.to_h)
+        building = yield check_building(building)
+        individual = yield check_individual(building.individual)
+        room = yield commit(validated_params.to_h.merge(building_id: building.id, individual_id: individual.id))
 
-       Success(room)
+        Success(room)
       end
 
       private
@@ -25,6 +26,11 @@ module Operations
         else
           Failure[:building_not_found, {}]
         end
+      end
+
+      def check_individual(individual)
+        individual = Individual.find_by(id: individual)
+        individual ? Success(individual) : Failure[:individual_not_found, {}]
       end
 
       def commit(params)

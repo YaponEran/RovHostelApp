@@ -8,7 +8,6 @@ RSpec.describe Operations::Hotels::Create, type: :service do
       adress: "City Almaty, buzurbaeva 20",
       postcode: "000500",
       phone_number: "+7(707)000-00-09",
-      user_id: user.id
     }
   end
   describe '#call' do

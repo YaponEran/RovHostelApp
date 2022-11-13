@@ -3,7 +3,7 @@ require "feature_helper"
 feature "User update hotel" do
   let!(:role) { create(:role) }
   let!(:user) { create(:user, role: role) }
-  let!(:hotel) { create(:hotel) }
+  let!(:hotel) { create(:hotel, individual_id: user.individual.id) }
 
   describe "With correct params", js: true do
     background do

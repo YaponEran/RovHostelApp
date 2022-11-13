@@ -29,7 +29,7 @@
   .field
     = f.label :role_id, class: "label"
     .control.select
-      = f.collection_select :role_id, Role.all.order(:title), :id, :title, {}, class: "input"
+      = f.collection_select :role_id, Role.with_individual(@individual).all.order(:title), :id, :title, {}, class: "input"
 
   .field.is-grouped
     .control

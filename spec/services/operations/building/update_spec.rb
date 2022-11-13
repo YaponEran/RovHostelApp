@@ -2,8 +2,9 @@ require "rails_helper"
 
 RSpec.describe Operations::Buildings::Update, tyoe: :service do
   describe "#call" do
-    let!(:hotel) { create(:hotel) }
-    let!(:building) { create(:building, hotel: hotel) }
+    let!(:individual) { create(:individual) }
+    let!(:hotel) { create(:hotel, individual: individual) }
+    let!(:building) { create(:building, hotel: hotel, individual: individual) }
 
     let(:params) do
       {

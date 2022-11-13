@@ -3,7 +3,9 @@ require "feature_helper"
 feature "User create hotels building" do
   let!(:role) { create(:role) }
   let!(:user) { create(:user, role: role) }
-  let!(:hotel) { create(:hotel) }
+
+  let!(:hotel) { create(:hotel, individual: user.individual) }
+
   describe "With correct policy", js: true do
     background do
       create(:permission, subject: "employee/buildings", action: "new", role: role)

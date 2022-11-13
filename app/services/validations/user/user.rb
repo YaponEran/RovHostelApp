@@ -8,6 +8,7 @@ module Validations
         required(:password).filled(:string)
         required(:email).filled(:string)
         required(:role_id).filled(:integer)
+        # required(:individual_id).filled(:integer)
       end
 
       rule(:email) do

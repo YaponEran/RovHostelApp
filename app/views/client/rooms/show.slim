@@ -10,7 +10,7 @@
     .card-content
       p.title = @room.overnight_kind
       - if @room.overnight_kind == "Комната"
-        p.subtitle = "Total @room count: #{@room.total_room}"
+        p.subtitle = "Total room count: #{@room.total_room}"
       p.subtitle = "Total bed count: #{@room.total_bed}"
       - if @room.overnight_kind == "Кроватка"
         p.subtitle = "Bed number: #{@room.bed_number}"
@@ -33,3 +33,15 @@
           p.title = "Price: #{@room.price.to_d}"
           span.icon.title.mt-2
           i.fas.fa-tag
+      
+      = form_for [:client, @reservation],  url: customer_user_reservation_client_room_path(@room), method: :post, local: true do |f|
+        = f.hidden_field :customer_user_id, value: current_customer_user.id || params[:customer_user_id]
+        = f.hidden_field :room_id, value: @room.id || params[:room_id]
+
+        = f.label :start_at, class: "label"
+        = f.date_field :start_at
+
+        = f.label :end_at, class: "label"
+        = f.date_field :end_at
+        p.mt-3
+          = f.submit "Reserve", class: "button is-success"

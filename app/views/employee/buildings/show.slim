@@ -25,6 +25,7 @@
         h1.subtitle.is-6 = @building.phone_number
 
 = link_to t(".create_new_room"), new_employee_building_room_path(@building), class: "button is-primary is-small mt-3"
+= link_to "Reserves", room_reserves_employee_building_path(@building), class: "button is-warning is-small mt-3 ml-3"
 
 
 .columns.mt-4

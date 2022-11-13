@@ -1,11 +1,12 @@
 require "feature_helper"
 
 feature "Update User" do
-  let!(:role) { create(:role) }
-  let!(:user) { create(:user, role: role) }
+  let!(:individual) { create(:individual) }
+  let!(:role) { create(:role, individual: individual) }
+  let!(:user) { create(:user, role: role, individual: individual) }
 
-  let!(:role2) { create(:role) }
-  let!(:user2) { create(:user, role: role2) }
+  let!(:role2) { create(:role, individual: individual) }
+  let!(:user2) { create(:user, role: role2, individual: individual) }
   describe "With correct policy", js: true do
     background do
       create(:permission, subject: "employee/users", action: "index", role: role)

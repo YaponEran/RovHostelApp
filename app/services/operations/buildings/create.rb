@@ -6,8 +6,8 @@ module Operations
       def call(hotel, params)
         validated_params = yield validate(params.to_h)
         hotel = yield check_hotel(hotel)
-        building = yield commit(validated_params.to_h.merge(hotel_id: hotel.id))
-        
+        individual = yield check_individual(hotel.individual)
+        building = yield commit(validated_params.to_h.merge(hotel_id: hotel.id, individual_id: individual.id))
         Success(building)
       end
 
@@ -24,6 +24,11 @@ module Operations
         else
           Failure[:hotel_not_found, {}]
         end
+      end
+
+      def check_individual(individual)
+        individual = Individual.find_by(id: individual)
+        individual ? Success(individual) : Failure[:individual_not_found, {}]
       end
 
       def commit(params)

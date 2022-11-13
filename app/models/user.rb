@@ -5,8 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   belongs_to :role
+  belongs_to :individual
   has_many :permissions, through: :role
   has_many :hotels, dependent: :destroy
+
+  scope :with_individual, ->(individual){ where(individual: individual) }
 
   def is_admin?
     self.admin == true

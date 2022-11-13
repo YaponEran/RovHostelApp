@@ -2,7 +2,8 @@ require "rails_helper"
 
 RSpec.describe Operations::Buildings::Create, type: :service do
   describe "#call" do
-    let!(:hotel) { create(:hotel) }
+    let!(:individual) { create(:individual) }
+    let!(:hotel) { create(:hotel, individual: individual) }
     let(:params) do
       {
         build_title: "Almaty 1",

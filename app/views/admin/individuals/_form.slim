@@ -1,0 +1,29 @@
+= form_for [:admin, @individual], local: true do |f|
+  .field
+    = f.label :title, class: "label"
+    .control
+      = f.text_field :title, class: "input"
+
+  .field
+    = f.label :judicial_adress, class: "label"
+    .control
+      = f.text_field :judicial_adress, class: "input"
+  
+  .field
+    = f.label :postal_adress, class: "label"
+    .control
+      = f.text_field :postal_adress, class: "input"
+
+  .field
+    = f.label :email, class: "label"
+    .control
+      = f.text_field :email, class: "input"
+  
+  .field
+    = f.label :phone, class: "label"
+    .control
+      = f.text_field :phone, placeholder: "+7 (707) 341-59-52", class: "input phone", data: {phone: true}
+  
+  .field.is-grouped
+    .control
+      = f.submit t("actions.submit"), class: "button is-primary"

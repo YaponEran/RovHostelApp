@@ -1,7 +1,9 @@
 module Employee
   class HotelsController < BaseController
+    before_action :find_individual
+
     def index
-      @hotels = Hotel.all
+      @hotels = Hotel.with_individual(@individual).all
     end
 
     def new
@@ -24,15 +26,15 @@ module Employee
     end
 
     def show
-      @hotel = Hotel.find_by(id: params[:id])
+      @hotel = Hotel.with_individual(@individual).find_by(id: params[:id])
     end
 
     def edit
-      @hotel = Hotel.find_by(id: params[:id])
+      @hotel = Hotel.with_individual(@individual).find_by(id: params[:id])
     end
 
     def update
-      @hotel = Hotel.find_by(id: params[:id])
+      @hotel = Hotel.with_individual(@individual).find_by(id: params[:id])
       
       operations = Operations::Hotels::Update.new
       result = operations.call(@hotel, hotel_params)
@@ -48,7 +50,7 @@ module Employee
     end
 
     def destroy
-      @hotel = Hotel.find_by(id: params[:id])
+      @hotel = Hotel.with_individual(@individual).find_by(id: params[:id])
 
       operations = Operations::Hotels::Destroy.new
       result = operations.call(@hotel)
@@ -64,6 +66,10 @@ module Employee
     end
 
     private
+    def find_individual
+      @individual = current_user.individual
+    end
+
     def hotel_params
       params.require(:hotel).permit(:title, :adress, :postcode, :phone_number)
     end

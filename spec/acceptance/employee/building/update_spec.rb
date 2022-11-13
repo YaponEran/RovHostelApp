@@ -3,8 +3,8 @@ require "feature_helper"
 feature "User update building" do
   let!(:role) { create(:role) }
   let!(:user) { create(:user, role: role) }
-  let!(:hotel) { create(:hotel) }
-  let!(:building) { create(:building, hotel: hotel) }
+  let!(:hotel) { create(:hotel, individual: user.individual) }
+  let!(:building) { create(:building, hotel: hotel, individual: user.individual) }
 
   describe "with correct policy", js: true do
     background do

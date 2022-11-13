@@ -5,10 +5,44 @@ span
   p.subtitle = current_customer_user.email
   p.subtitle = current_customer_user.mobile_phone
 
+span
+  .tag.is-warning
+    p = "Orders cout: #{current_customer_user.reservations.count}"
+
 
 hr
 - if current_customer_user.reservations.any?
   p.title = "Have reserve"
+  table.table.is-fullwidth.mt-5
+    thead
+      tr
+        th = "Client name"
+        th = "Room kind"
+        th = "Start_at"
+        th = "End_at"
+        th = "Address"
+        th= "Bed number"
+        th = "Total price"
+        th = "Cancel"
+      tbody
+        - current_customer_user.reservations.each do |reserv|
+          tr
+            td = reserv.customer_user.full_name
+            td
+              .tag.is-light
+                = reserv.room.overnight_kind
+            td = reserv.start_at
+            td = reserv.end_at
+            td = reserv.room.building.address
+            td
+              .tag.is-success
+                -if reserv.room.overnight_kind == 'Кроватка'
+                  = "#{reserv.room.bed_number} • #{reserv.room.overnight_kind}"
+                -else
+                 = "Not bed kind"
+            td = "#{reserv.room.price}-tenge"
+            td
+              = link_to "Cancel", client_reservation_path(reserv), method: :delete, data: {confirm: "Are you sure"}, class: "button is-small is-info"
 - else 
   p.title = "No reserve"
   .title = current_customer_user.reservations.count

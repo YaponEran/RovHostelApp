@@ -1,0 +1,8 @@
+h1 = @admin_page
+
+= link_to "Create new Individual client", new_admin_individual_path, class: "button is-small is-primary"
+
+= link_to "Api", api_react_v1_rooms_path, class: "button is-small is-success ml-2"
+
+.columns.mt-2
+  = render @individuals

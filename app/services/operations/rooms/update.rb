@@ -6,6 +6,7 @@ module Operations
       def call(resource, params)
         validated_params = yield validate(params.to_h)
         yield check_buildind(resource.building)
+        yield check_individual(resource.building.individual)
         yield check_room(resource)
         resource = yield commit(resource, validated_params.to_h)
 
@@ -25,6 +26,11 @@ module Operations
         else
           Failure[:building_not_found, {}]
         end
+      end
+
+      def check_individual(individual)
+        individual = Individual.find_by(id: individual)
+        individual ? Success(individual) : Failure[:individual_not_found, {}]
       end
 
       def check_room(room)

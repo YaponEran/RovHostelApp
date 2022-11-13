@@ -9,6 +9,7 @@ FactoryBot.define do
     has_wifi { true }
     price { 1000.0 }
     bed_number { 12 }
-    building 
+    building
+    individual
   end
 end

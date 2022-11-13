@@ -1,8 +1,10 @@
 module Employee
   class UsersController < BaseController
 
+    before_action :find_individual
+
     def index
-      @users = User.all
+      @users = User.with_individual(@individual).all
     end
 
     def new
@@ -11,7 +13,7 @@ module Employee
 
     def create
       operations = Operations::Users::Create.new
-      result = operations.call(user_params)
+      result = operations.call(user_params, @individual)
 
       case result
       in Success
@@ -27,7 +29,7 @@ module Employee
     end
 
     def show
-      @user = User.find_by(id: params[:id])
+      @user = User.with_individual(@individual).find_by(id: params[:id])
     end
 
     def edit
@@ -51,6 +53,10 @@ module Employee
     end
 
     private
+
+    def find_individual
+      @individual = current_user.individual
+    end
 
     def user_params
       params.require(:user).permit(:first_name, :last_name, :mobile_phone, :email, :password, :role_id)
