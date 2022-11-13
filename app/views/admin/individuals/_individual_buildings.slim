@@ -1,0 +1,22 @@
+h1.title = "Individual buildings"
+ 
+- if @buildings.exists?
+  table.table.is-fullwidth.mt-5
+    thead
+      tr
+        th = "#"
+        th = Building.human_attribute_name(:build_title)
+        th = Building.human_attribute_name(:build_postcode)
+        th = Building.human_attribute_name(:address)
+        th = Building.human_attribute_name(:phone_number)
+    tbody
+      -@buildings.each_with_index do |build, index|
+        tr
+          td= index += 1
+          td = build.build_title
+          td = build.build_postcode
+          td = build.address
+          td = build.phone_number
+- else
+  .tag.is-dark
+    h1.has-text-warning = "Fill builfings"

@@ -1,0 +1,22 @@
+h1.title = "Individual Hotels"
+ 
+- if @hotels.exists?
+  table.table.is-fullwidth.mt-5
+    thead
+      tr
+        th = "#"
+        th = Hotel.human_attribute_name(:title)
+        th = Hotel.human_attribute_name(:postcode)
+        th = Hotel.human_attribute_name(:adress)
+        th = Hotel.human_attribute_name(:phone_number)
+    tbody
+      -@hotels.each_with_index do |hotel, index|
+        tr
+          td= index += 1
+          td = hotel.title
+          td = hotel.postcode
+          td = hotel.adress
+          td = hotel.phone_number
+- else
+  .tag.is-dark
+    h1.has-text-warning = "Fill hotels"

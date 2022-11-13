@@ -1,0 +1,28 @@
+h1.title = "Individual rooms"
+ 
+- if @rooms.exists?
+  table.table.is-fullwidth.mt-5
+    thead
+      tr
+        th = "#"
+        th = Room.human_attribute_name(:overnight_kind)
+        th = Room.human_attribute_name(:total_room)
+        th = Room.human_attribute_name(:total_bed)
+        th = Room.human_attribute_name(:has_air_con)
+        th = Room.human_attribute_name(:has_kitchen)
+        th = Room.human_attribute_name(:has_bath)
+        th = Room.human_attribute_name(:has_wifi)
+    tbody
+      -@rooms.each_with_index do |room, index|
+        tr
+          td= index += 1
+          td = room.overnight_kind
+          td = room.total_room
+          td = room.total_bed
+          td = room.has_air_con
+          td = room.has_kitchen
+          td = room.has_bath
+          td = room.has_wifi
+- else
+  .tag.is-dark
+    h1.has-text-warning = "Fill rooms"

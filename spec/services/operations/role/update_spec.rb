@@ -2,7 +2,8 @@ require "rails_helper"
 
 RSpec.describe Operations::Roles::Update, type: :service do
   describe "#call" do
-    let(:role) { create(:role) }
+    let!(:individual) { create(:individual) }
+    let(:role) { create(:role, individual: individual) }
     let(:params) do
       {
         title: "Updated role",
@@ -27,8 +28,7 @@ RSpec.describe Operations::Roles::Update, type: :service do
     end
 
     context "When title is already take" do
-      let!(:another_role) { create(:role, title: "Updated role")}
-
+      let!(:another_role) { create(:role, title: "Updated role", individual: individual)}
       it "retunrs :uniqueness_violation error" do
         result = subject.call(role, params)
         expect(result).to be_a(Dry::Monads::Failure)

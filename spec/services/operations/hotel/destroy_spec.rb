@@ -2,7 +2,8 @@ require "rails_helper"
 
 RSpec.describe Operations::Hotels::Destroy, type: :service do
   describe "#call" do
-    let!(:hotel) { create(:hotel) }
+    let!(:user) { create(:user) }
+    let!(:hotel) { create(:hotel, individual_id: user.individual.id) }
 
     context "when all params correct" do
       it "returns success" do

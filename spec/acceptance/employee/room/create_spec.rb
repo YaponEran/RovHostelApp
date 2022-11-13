@@ -3,7 +3,9 @@ require "feature_helper"
 feature "User create room" do
   let!(:role) { create(:role) }
   let!(:user) { create(:user, role: role) }
-  let!(:building) { create(:building) }
+  let!(:hotel) { create(:hotel, individual: user.individual) }
+  let!(:building) { create(:building, hotel: hotel, individual: user.individual) }
+
   describe "With correct policy", js: true do
     background do
       create(:permission, subject: "employee/rooms", action: "new", role: role )
@@ -24,11 +26,7 @@ feature "User create room" do
       page.check('Bath room')
       page.check('Wifi router')
       fill_in "Price", with: 100.00
-      
       click_on "Submit"
-
-      # save_and_open_page
-
       expect(page).to have_content("Room successfuly created")
     end
   end

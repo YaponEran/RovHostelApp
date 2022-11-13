@@ -1,0 +1,37 @@
+= form_for [:admin, @user], url: create_individual_user_admin_individual_path(@individual), method: :post, local: true do |f|
+
+  .field
+    = f.label :first_name, class: "label"
+    .control
+      = f.text_field :first_name, class: "input"
+
+  .field
+    = f.label :last_name, class: "label"
+    .control
+      = f.text_field :last_name, class: "input"
+
+  .field
+    = f.label :email, class: "label"
+    .control
+      = f.email_field :email, class: "input"
+
+  .field
+    = f.label :mobile_phone, class: "label"
+    .control
+      = f.text_field :mobile_phone, placeholder: "+7 (707) 341-59-52", class: "input phone", data: {phone: true}
+
+  .field
+    = f.label :password, class: "label"
+    .control
+      = f.password_field :password, class: "input"
+  
+  / .select.mb-4
+
+  .field
+  = f.label :admin, class: "label"
+  .control
+    = f.check_box :admin
+
+  .field.is-grouped
+    .control
+      = f.submit "Submit", class: "button is-primary"

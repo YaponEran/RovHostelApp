@@ -1,8 +1,9 @@
 require "feature_helper"
 
 feature "Create Role" do
-  let!(:role) { create(:role) }
-  let!(:user) { create(:user, role: role) }
+  let!(:individual) { create(:individual) }
+  let!(:role) { create(:role, individual: individual) }
+  let!(:user) { create(:user, role: role, individual: individual) }
 
   describe "With correct policy", js: true do
     background do

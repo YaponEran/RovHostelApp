@@ -1,7 +1,11 @@
 module Employee
   class RoomsController < BaseController
+    before_action :find_individual
+    
+    def index;end
 
-    def index
+    def show
+      @room = Room.with_individual(@individual).find_by(id: params[:id])
     end
 
     def new
@@ -65,8 +69,12 @@ module Employee
 
     private
 
+    def find_individual
+      @individual = current_user.individual
+    end
+
     def room_params
-      params.require(:room).permit(:overnight_kind, :total_room, :total_bed, :has_air_con, :has_kitchen, :has_bath, :has_wifi, :price)
+      params.require(:room).permit(:overnight_kind, :total_room, :total_bed, :has_air_con, :has_kitchen, :has_bath, :has_wifi, :price, :bed_number)
     end
     
   end

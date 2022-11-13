@@ -1,0 +1,20 @@
+.column.is-5
+  .box
+    h1.title = individual.title
+    hr
+    p = individual.judicial_adress
+    p = individual.postal_adress
+    hr
+    p = individual.phone
+    p = individual.email
+    hr
+    .tags.has-addons
+      span.tag = "User uuid"
+      span.tag.is-primary = individual.personal_uuid
+    .tags.has-addons
+      span.tag = "User token"
+      span.tag.is-dark = individual.auth_token
+      
+    = link_to "Update individual", edit_admin_individual_path(individual), class: "button is-small is-warning"
+    = link_to "Show detail", admin_individual_path(individual), class: "button is-small is-dark ml-2"
+    = link_to "New User of Individual", new_individual_user_admin_individual_path(individual), class: "button is-small is-primary ml-2"

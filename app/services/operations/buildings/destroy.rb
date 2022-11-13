@@ -4,7 +4,8 @@ module Operations
       include Dry::Monads[:result, :do]
 
       def call(building)
-        yield check_hotel(building.hotel)
+        hotel = yield check_hotel(building.hotel)
+        yield check_individual(hotel.individual)
         yield check_buildind(building)
         yield commit(building)
 
@@ -20,6 +21,11 @@ module Operations
         else
           Failure[:hotel_not_found, {}]
         end
+      end
+
+      def check_individual(individual)
+        individual = Individual.find_by(id: individual)
+        individual ? Success(individual) : Failure[:individual_not_found, {}]
       end
 
       def check_buildind(building)

@@ -5,6 +5,7 @@ module Operations
       
       def call(hotel)
         yield check_hotel(hotel)
+        yield check_individual(hotel.individual)
         yield delete(hotel)
         Success()
       end
@@ -18,6 +19,11 @@ module Operations
         else
           Failure[:hotel_not_found, {}]
         end
+      end
+
+      def check_individual(individual)
+        individual = Individual.find_by(id: individual)
+        individual ? Success(individual) : Failure[:individual_not_found, {}]
       end
 
       def delete(hotel)

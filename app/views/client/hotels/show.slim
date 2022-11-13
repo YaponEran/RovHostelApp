@@ -1,0 +1,24 @@
+- if @hotel.buildings.exists?
+  table.table.is-fullwidth.mt-5
+    thead
+      tr
+        th = "#"
+        th = Building.human_attribute_name(:build_title)
+        th = Building.human_attribute_name(:build_postcode)
+        th = Building.human_attribute_name(:address)
+        th = Building.human_attribute_name(:phone_number)
+        th = Building.human_attribute_name(:count_of_stuffs)
+    tbody
+      -@hotel.buildings.each_with_index do |building, index|
+        tr
+          td= index += 1
+          td
+            = link_to building.build_title, client_building_path(building)
+          td = building.build_postcode
+          td = building.address
+          td = building.phone_number
+          td
+            .tag.is-warning
+              = "Комнатов: #{building.rooms.where(overnight_kind: "Комната").count}"
+            .tag.is-info.ml-2
+              = "Кроватов: #{building.rooms.where(overnight_kind: "Кроватка").count}"

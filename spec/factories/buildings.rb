@@ -5,5 +5,6 @@ FactoryBot.define do
     sequence(:address) { |n| "City Almaty room_#{n}"}
     sequence(:phone_number) { |n| "+7(707)000-00-0#{n}"}
     hotel
+    individual
   end
 end

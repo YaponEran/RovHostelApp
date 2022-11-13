@@ -5,5 +5,6 @@ FactoryBot.define do
     sequence(:postcode) { |n| "003000#{n}"}
     sequence(:phone_number) { |n| "+7(707)000-00-0#{n}"}
     user
+    individual
   end
 end

@@ -2,7 +2,9 @@ require "rails_helper"
 
 RSpec.describe Operations::Rooms::Create, type: :service do
   describe "#call" do
-    let!(:building) { create(:building) }
+    let!(:individual) { create(:individual) }
+    let!(:hotel) { create(:hotel, individual: individual) }
+    let!(:building) { create(:building, hotel: hotel, individual: individual) }
     let(:params) do
       {
         overnight_kind: "Room",
@@ -12,6 +14,7 @@ RSpec.describe Operations::Rooms::Create, type: :service do
         has_kitchen: true,
         has_bath: true,
         has_wifi: true,
+        bed_number: 12,
         price: 0.0
       }
     end

@@ -8,6 +8,8 @@ FactoryBot.define do
     has_bath { true }
     has_wifi { true }
     price { 1000.0 }
-    building 
+    bed_number { 12 }
+    building
+    individual
   end
 end

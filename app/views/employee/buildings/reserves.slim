@@ -1,0 +1,17 @@
+
+table.table.is-fullwidth.mt-5
+  thead
+    tr
+      th = "Client name"
+      th = "Room kind"
+      th = "Start_at"
+      th = "End_at"
+      th = "Total price"
+  tbody
+    - @reserves.each do |reserv|
+      tr
+        td = reserv.customer_user.full_name
+        td = reserv.room.overnight_kind
+        td = reserv.start_at
+        td = reserv.end_at
+        td = "#{reserv.room.price}-tenge"

@@ -10,6 +10,7 @@ ru:
         has_air_con: Кондиционер
         has_wifi: Вайфай роутер
         price: Цена на ночевку
+        bed_number: Номер кровата
   room:
     OVERNIGHT_KIND:
       Room: Комната

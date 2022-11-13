@@ -3,14 +3,14 @@ require "rails_helper"
 RSpec.describe Operations::Hotels::Update, type: :service do
   describe "#call" do
     let!(:user) { create(:user) }
-    let!(:hotel) { create(:hotel, user: user)}
+    let!(:hotel) { create(:hotel, user: user, individual_id: user.individual.id)}
 
     let(:params) do
       {
         title: "City Ashgabad",
         adress: "Andaliba 80",
         postcode: "000500",
-        phone_number: "+7(707)341-00-21"
+        phone_number: "+7(707)341-00-21",
       }
     end
     context "When all params correct" do

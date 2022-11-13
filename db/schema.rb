@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_08_091806) do
+ActiveRecord::Schema.define(version: 2022_11_13_051932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admin_users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_admin_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
 
   create_table "buildings", force: :cascade do |t|
     t.string "build_title", null: false
@@ -23,7 +35,24 @@ ActiveRecord::Schema.define(version: 2022_09_08_091806) do
     t.bigint "hotel_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "individual_id", null: false
     t.index ["hotel_id"], name: "index_buildings_on_hotel_id"
+    t.index ["individual_id"], name: "index_buildings_on_individual_id"
+  end
+
+  create_table "customer_users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "mobile_phone", null: false
+    t.index ["email"], name: "index_customer_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_customer_users_on_reset_password_token", unique: true
   end
 
   create_table "hotels", force: :cascade do |t|
@@ -34,8 +63,26 @@ ActiveRecord::Schema.define(version: 2022_09_08_091806) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "individual_id", null: false
+    t.index ["individual_id"], name: "index_hotels_on_individual_id"
     t.index ["title"], name: "index_hotels_on_title", unique: true
     t.index ["user_id"], name: "index_hotels_on_user_id"
+  end
+
+  create_table "individuals", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "judicial_adress", null: false
+    t.string "postal_adress", null: false
+    t.string "personal_uuid"
+    t.string "auth_token"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "phone", null: false
+    t.string "email", null: false
+    t.index ["auth_token"], name: "index_individuals_on_auth_token", unique: true
+    t.index ["email"], name: "index_individuals_on_email", unique: true
+    t.index ["personal_uuid"], name: "index_individuals_on_personal_uuid", unique: true
+    t.index ["phone"], name: "index_individuals_on_phone", unique: true
   end
 
   create_table "permissions", force: :cascade do |t|
@@ -50,12 +97,25 @@ ActiveRecord::Schema.define(version: 2022_09_08_091806) do
     t.index ["subject"], name: "index_permissions_on_subject"
   end
 
+  create_table "reservations", force: :cascade do |t|
+    t.bigint "customer_user_id", null: false
+    t.bigint "room_id", null: false
+    t.datetime "start_at", null: false
+    t.datetime "end_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_user_id"], name: "index_reservations_on_customer_user_id"
+    t.index ["room_id"], name: "index_reservations_on_room_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "role_rank", default: 0
-    t.index ["title"], name: "index_roles_on_title", unique: true
+    t.integer "individual_id", null: false
+    t.index ["individual_id"], name: "index_roles_on_individual_id"
+    t.index ["title", "individual_id"], name: "index_roles_on_title_and_individual_id", unique: true
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -70,7 +130,10 @@ ActiveRecord::Schema.define(version: 2022_09_08_091806) do
     t.decimal "price", default: "0.0"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "bed_number", default: 0
+    t.integer "individual_id", null: false
     t.index ["building_id"], name: "index_rooms_on_building_id"
+    t.index ["individual_id"], name: "index_rooms_on_individual_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -86,14 +149,23 @@ ActiveRecord::Schema.define(version: 2022_09_08_091806) do
     t.datetime "remember_created_at"
     t.bigint "role_id"
     t.boolean "admin", default: false
+    t.integer "individual_id", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["individual_id"], name: "index_users_on_individual_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
   add_foreign_key "buildings", "hotels"
+  add_foreign_key "buildings", "individuals"
+  add_foreign_key "hotels", "individuals"
   add_foreign_key "hotels", "users"
   add_foreign_key "permissions", "roles"
+  add_foreign_key "reservations", "customer_users"
+  add_foreign_key "reservations", "rooms"
+  add_foreign_key "roles", "individuals"
   add_foreign_key "rooms", "buildings"
+  add_foreign_key "rooms", "individuals"
+  add_foreign_key "users", "individuals"
   add_foreign_key "users", "roles"
 end

@@ -2,12 +2,17 @@
   .field
     = f.label :overnight_kind, class: "label"
     .control
-      = f.select :overnight_kind, options_for_select(Room::OVERNIGHT_KIND.map { |overnight_kinde| [t("room.OVERNIGHT_KIND.#{overnight_kinde}")]}), {}, class: "input"
+      = f.select :overnight_kind, options_for_select(Room::OVERNIGHT_KIND.map { |overnight_kinde| [t("room.OVERNIGHT_KIND.#{overnight_kinde}")]}, selected: @room.overnight_kind), {}, class: "input"
   
   .field
     = f.label :total_room, class: "label"
     .control
       = f.number_field :total_room, class: "input"
+
+  .field.bed-number.is-hidden
+    = f.label :bed_number, class: "label"
+    .control
+      = f.number_field :bed_number, class: "input"
 
   .field
     = f.label :total_bed, class: "label"
